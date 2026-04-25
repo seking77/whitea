@@ -424,6 +424,17 @@ body::before {
 .footer-icp { font-family:'Montserrat',sans-serif; font-size:9px; letter-spacing:.1em; color:rgba(184,160,112,.35); }
 
 /* ═══ RESPONSIVE ═══ */
+/* ── 移动端汉堡菜单 ── */
+.mobile-menu-btn { display: none; flex-direction: column; gap: 5px; background: transparent; border: none; padding: 6px; cursor: pointer; }
+.mobile-menu-btn span { display: block; width: 22px; height: 1.5px; background: var(--gold); transition: all .25s; }
+.mobile-menu-btn.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+.mobile-menu-btn.open span:nth-child(2) { opacity: 0; }
+.mobile-menu-btn.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+.mobile-menu { display: none; position: fixed; top: 56px; left: 0; right: 0; background: var(--ink); border-bottom: 1px solid rgba(184,160,112,.2); z-index: 199; flex-direction: column; padding: 8px 0; }
+.mobile-menu.open { display: flex; }
+.mobile-menu a { padding: 14px 24px; font-family: 'Noto Serif SC', serif; font-size: 15px; letter-spacing: .08em; color: var(--gold); text-decoration: none; border-bottom: .5px solid rgba(184,160,112,.1); }
+.mobile-menu a:hover { background: rgba(184,160,112,.08); color: var(--white); }
+.mobile-menu-lang { display: flex; gap: 8px; padding: 14px 24px; }
 @media (max-width: 968px) {
   .hero-content { grid-template-columns: 1fr; gap: 40px; }
   .hero-right { align-items: flex-start; }
@@ -438,7 +449,8 @@ body::before {
   .site-header { padding: 0 20px; }
   .header-nav { gap: 2px; }
   .header-nav a { display: none; }
-  .header-nav a:last-child, .lang-toggle { display: flex; }
+  .lang-toggle { display: flex; }
+  .mobile-menu-btn { display: flex; }
 }
 @media (max-width: 640px) {
   .brand-grid, .products-grid, .story-grid { grid-template-columns: 1fr; }
@@ -483,14 +495,28 @@ body::before {
     <div class="header-name">三茶阁 <span>SANCHAGE</span></div>
   </a>
   <nav class="header-nav">
-    <a href="#brand" data-zh="品牌" data-en="BRAND">品牌</a>
+    <a href="#hero" data-zh="首页" data-en="HOME">首页</a>
     <a href="#products" data-zh="产品" data-en="PRODUCTS">产品</a>
     <a href="#origin" data-zh="产地" data-en="ORIGIN">产地</a>
     <a href="#channel" data-zh="购买" data-en="BUY">购买</a>
     <button class="lang-toggle active" onclick="setLang('zh')">中</button>
     <button class="lang-toggle" onclick="setLang('en')">EN</button>
   </nav>
+  <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="菜单" onclick="toggleMobileMenu()">
+    <span></span><span></span><span></span>
+  </button>
 </header>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#hero" onclick="closeMobileMenu()" data-zh="首页" data-en="HOME">首页</a>
+  <a href="#products" onclick="closeMobileMenu()" data-zh="产品" data-en="PRODUCTS">产品</a>
+  <a href="#origin" onclick="closeMobileMenu()" data-zh="产地" data-en="ORIGIN">产地</a>
+  <a href="#channel" onclick="closeMobileMenu()" data-zh="购买" data-en="BUY">购买</a>
+  <a href="story/" onclick="closeMobileMenu()" data-zh="主理人故事" data-en="OUR STORY">主理人故事</a>
+  <div class="mobile-menu-lang">
+    <button onclick="setLang('zh');closeMobileMenu()" class="lang-toggle active">中</button>
+    <button onclick="setLang('en');closeMobileMenu()" class="lang-toggle">EN</button>
+  </div>
+</div>
 
 <!-- ═══ 01 · HERO ═══ -->
 <section class="hero" id="hero">
@@ -604,9 +630,9 @@ body::before {
 
       <!-- 静芯 · 白毫银针 -->
       <div class="product-card">
-        <div class="product-card-img" style="background:#1E2020">
+        <a href="products/jingxin.html" class="product-card-img" style="background:#1E2020;text-decoration:none;display:flex;align-items:center;justify-content:center">
           <div class="product-card-img-placeholder" style="color:rgba(184,160,112,.25)">芯</div>
-        </div>
+        </a>
         <div class="product-card-body">
           <div class="product-card-series en">JINGXIN · 静芯</div>
           <div class="product-card-name" data-zh="静芯" data-en="Quiet Heart">静芯</div>
@@ -618,9 +644,9 @@ body::before {
 
       <!-- 芳华 · 白牡丹 -->
       <div class="product-card">
-        <div class="product-card-img" style="background:#F2ECE0">
+        <a href="products/fanghua.html" class="product-card-img" style="background:#F2ECE0;text-decoration:none;display:flex;align-items:center;justify-content:center">
           <div class="product-card-img-placeholder" style="color:rgba(171,0,2,.2)">华</div>
-        </div>
+        </a>
         <div class="product-card-body">
           <div class="product-card-series en">FANGHUA · 芳华</div>
           <div class="product-card-name" data-zh="芳华" data-en="Blooming Years">芳华</div>
@@ -632,9 +658,9 @@ body::before {
 
       <!-- 翠微 · 寿眉 -->
       <div class="product-card">
-        <div class="product-card-img" style="background:#C6D5BF">
+        <a href="products/cuiwei.html" class="product-card-img" style="background:#C6D5BF;text-decoration:none;display:flex;align-items:center;justify-content:center">
           <div class="product-card-img-placeholder" style="color:rgba(58,107,74,.3)">微</div>
-        </div>
+        </a>
         <div class="product-card-body">
           <div class="product-card-series en">CUIWEI · 翠微</div>
           <div class="product-card-name" data-zh="翠微" data-en="Jade Mist">翠微</div>
@@ -646,9 +672,9 @@ body::before {
 
       <!-- 荒野 · 荒野白茶 -->
       <div class="product-card">
-        <div class="product-card-img" style="background:#2A1F0F">
+        <a href="products/wild.html" class="product-card-img" style="background:#2A1F0F;text-decoration:none;display:flex;align-items:center;justify-content:center">
           <div class="product-card-img-placeholder" style="color:rgba(184,160,112,.2)">野</div>
-        </div>
+        </a>
         <div class="product-card-body">
           <div class="product-card-series en">WILD · 荒野</div>
           <div class="product-card-name" data-zh="荒野" data-en="Wild Growth">荒野</div>
@@ -870,8 +896,12 @@ body::before {
       </div>
     </div>
     <div class="footer-bottom">
-      <div class="footer-copy">© 2024 三茶阁 SANCHAGE · All Rights Reserved</div>
-      <div class="footer-icp">sanchage.com · FUJIAN FUDING</div>
+      <div class="footer-copy">© 2026 三茶阁 SANCHAGE · All Rights Reserved</div>
+      <div class="footer-icp">
+        福鼎三茶客茶业有限公司 &nbsp;·&nbsp;
+        <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener" style="color:inherit;text-decoration:none">闽ICP备19016600号-2</a>
+        &nbsp;·&nbsp; sanchage.com
+      </div>
     </div>
   </div>
 </footer>
@@ -890,6 +920,25 @@ function setLang(l) {
   });
   localStorage.setItem('lang', l);
 }
+
+/* ═══ MOBILE MENU ═══ */
+function toggleMobileMenu() {
+  const menu = document.getElementById('mobileMenu');
+  const btn = document.getElementById('mobileMenuBtn');
+  menu.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+function closeMobileMenu() {
+  document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('mobileMenuBtn').classList.remove('open');
+}
+document.addEventListener('click', function(e) {
+  const menu = document.getElementById('mobileMenu');
+  const btn = document.getElementById('mobileMenuBtn');
+  if (menu.classList.contains('open') && !menu.contains(e.target) && !btn.contains(e.target)) {
+    closeMobileMenu();
+  }
+});
 
 /* ═══ SMOOTH SCROLL ═══ */
 document.querySelectorAll('a[href^="#"]').forEach(a => {
