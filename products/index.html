@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="三茶阁 SANCHAGE · 全部产品 · 福鼎白茶">
+<title>三茶阁 · 全部产品</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;700&family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--red:#AB0002;--green:#3A6B4A;--brown:#8B4513;--jade:#C6D5BF;--paper:#F2ECE0;--ink:#1E2020;--gold:#B8A070;--wild:#2A1F0F;--white:#FFFFFF;--border:#D8CFBE;--muted:#6A5F50;--soft:#F8F6F0}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:'Noto Serif SC',serif;font-size:14px;line-height:1.8;-webkit-font-smoothing:antialiased}
+::selection{background:var(--red);color:var(--white)}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");background-size:180px;opacity:.5}
+.site-header{position:sticky;top:0;z-index:200;background:var(--ink);border-bottom:2px solid var(--red);height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 44px;box-shadow:0 2px 12px rgba(0,0,0,.18)}
+.header-brand{display:flex;align-items:center;gap:14px;text-decoration:none}
+.header-seal{width:34px;height:34px;display:flex;align-items:center;justify-content:center}
+.header-name{color:var(--white);font-weight:700;font-size:16px;letter-spacing:.12em}
+.header-name span{font-family:'Montserrat',sans-serif;font-weight:300;font-size:10px;color:var(--gold);margin-left:10px;letter-spacing:.22em}
+.header-nav{display:flex;gap:4px;align-items:center}
+.header-nav a{font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:.14em;color:var(--gold);text-decoration:none;padding:5px 10px;border:.5px solid rgba(184,160,112,.3);border-radius:2px;transition:all .2s}
+.header-nav a:hover{background:rgba(184,160,112,.12);color:var(--white)}
+.lang-toggle{font-family:'Montserrat',sans-serif;font-size:9px;color:var(--muted);background:transparent;border:.5px solid rgba(184,160,112,.2);padding:4px 8px;cursor:pointer;transition:all .2s;border-radius:2px}
+.lang-toggle.active{color:var(--gold);border-color:rgba(184,160,112,.5)}
+.page{max-width:1200px;margin:0 auto;padding:0 44px 120px;position:relative;z-index:1}
+
+/* Page hero */
+.list-hero{padding:72px 0 56px;border-bottom:1px solid var(--border)}
+.list-hero-eyebrow{font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:.3em;color:var(--gold);margin-bottom:20px;display:flex;align-items:center;gap:12px}
+.list-hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--red)}
+.list-hero-title{font-size:clamp(36px,5vw,56px);font-weight:700;letter-spacing:.06em;line-height:1.1;margin-bottom:12px}
+.list-hero-sub{font-size:14px;color:var(--muted);letter-spacing:.1em;line-height:2}
+.list-filter{display:flex;gap:0;margin-top:32px;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.filter-btn{flex:1;padding:14px 0;text-align:center;font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:.2em;color:var(--muted);background:transparent;border:none;border-right:1px solid var(--border);cursor:pointer;transition:all .2s}
+.filter-btn:last-child{border-right:none}
+.filter-btn.active{color:var(--ink);background:var(--white)}
+.filter-btn:hover:not(.active){background:var(--soft)}
+
+/* Product grid */
+.products-section{margin-top:64px}
+.products-label{display:flex;align-items:center;gap:16px;margin-bottom:40px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.products-label-num{font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:.22em;color:var(--muted);border:.5px solid var(--border);padding:4px 10px}
+.products-label-en{font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:.22em;color:var(--muted);margin-left:auto}
+.products-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0}
+
+/* Product card */
+.product-card{border:1px solid var(--border);margin-right:-1px;margin-bottom:-1px;background:var(--white);overflow:hidden;transition:box-shadow .3s}
+.product-card:hover{box-shadow:0 8px 32px rgba(0,0,0,.08);z-index:1;position:relative}
+.card-img{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.card-img-char{font-size:96px;font-weight:700;transition:transform .4s cubic-bezier(.22,1,.36,1)}
+.product-card:hover .card-img-char{transform:scale(1.06)}
+.card-badge{position:absolute;top:16px;left:16px;font-family:'Montserrat',sans-serif;font-size:8px;letter-spacing:.2em;padding:5px 10px;z-index:2}
+.card-series-tag{position:absolute;top:16px;right:16px;font-family:'Montserrat',sans-serif;font-size:8px;letter-spacing:.16em;color:var(--muted);background:rgba(255,255,255,.88);border:.5px solid var(--border);padding:4px 10px}
+.card-body{padding:24px}
+.card-eyebrow{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.card-series{font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:.2em}
+.card-vintage{font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:.15em;color:var(--muted)}
+.card-name{font-size:32px;font-weight:700;letter-spacing:.08em;line-height:1.1;margin-bottom:6px}
+.card-sub{font-size:14px;letter-spacing:.12em;margin-bottom:16px}
+.card-tagline{font-size:13px;color:var(--muted);line-height:1.9;border-left:2px solid var(--border);padding-left:14px;margin-bottom:20px}
+.card-meta{display:flex;gap:0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:20px}
+.card-meta-item{flex:1;padding:10px 14px;border-right:1px solid var(--border)}
+.card-meta-item:last-child{border-right:none}
+.card-meta-k{font-family:'Montserrat',sans-serif;font-size:7px;letter-spacing:.2em;color:var(--gold);margin-bottom:3px}
+.card-meta-v{font-size:12px;font-weight:500}
+.card-footer{display:flex;align-items:center;justify-content:space-between}
+.card-flavor-row{display:flex;gap:6px}
+.card-flavor-dot{width:7px;height:7px;transform:rotate(45deg)}
+.card-cta{font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:.2em;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:2px;transition:all .2s}
+.card-cta:hover{color:var(--red);border-color:var(--red)}
+
+/* Compare strip */
+.compare-strip{margin-top:88px;background:var(--ink);padding:48px 44px}
+.compare-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:36px;padding-bottom:20px;border-bottom:1px solid rgba(184,160,112,.2)}
+.compare-title{font-size:22px;font-weight:700;color:var(--white);letter-spacing:.06em}
+.compare-sub{font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:.2em;color:var(--gold)}
+.compare-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.compare-col{padding:0 20px;border-right:1px solid rgba(255,255,255,.06)}
+.compare-col:first-child{padding-left:0}
+.compare-col:last-child{border-right:none}
+.compare-name{font-size:20px;font-weight:700;letter-spacing:.08em;margin-bottom:4px}
+.compare-grade{font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:.16em;margin-bottom:16px;opacity:.7}
+.compare-row{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.compare-row:last-child{border-bottom:none}
+.compare-k{font-family:'Montserrat',sans-serif;font-size:8px;letter-spacing:.16em;color:rgba(184,160,112,.7)}
+.compare-v{font-size:12px;letter-spacing:.08em}
+.compare-bar-wrap{flex:1;height:1px;background:rgba(255,255,255,.08);margin:0 10px}
+.compare-bar{height:100%;transition:width .8s}
+
+/* Brand strip */
+.brand-strip{margin-top:56px;padding:48px 0;border-top:1px solid var(--border);display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.brand-strip-left h3{font-size:28px;font-weight:700;letter-spacing:.06em;margin-bottom:12px}
+.brand-strip-left p{font-size:13px;color:var(--muted);line-height:2}
+.brand-strip-right{display:flex;flex-direction:column;gap:16px}
+.brand-value{display:flex;gap:20px;align-items:flex-start;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.brand-value:last-child{border-bottom:none;padding-bottom:0}
+.brand-value-num{font-family:'Montserrat',sans-serif;font-size:24px;font-weight:300;color:var(--gold);letter-spacing:.06em;flex-shrink:0;line-height:1}
+.brand-value-text h4{font-size:15px;font-weight:500;letter-spacing:.1em;margin-bottom:4px}
+.brand-value-text p{font-size:12px;color:var(--muted);line-height:1.8}
+
+.site-footer{background:var(--ink);color:var(--gold);padding:40px 44px;text-align:center;font-size:12px;line-height:2;border-top:2px solid var(--red);position:relative;z-index:1}
+.site-footer strong{color:var(--white);font-size:16px;display:block;margin-bottom:4px}
+@media(max-width:960px){.products-grid,.compare-grid{grid-template-columns:1fr}.brand-strip{grid-template-columns:1fr}.page{padding:0 20px 80px}.site-header{padding:0 20px}.compare-strip{padding:32px 20px}}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="../" class="header-brand">
+    <div class="header-seal">
+      <svg viewBox="0 0 283.46 283.46" width="34" height="34" xmlns="http://www.w3.org/2000/svg">
+        <style>.hs{fill:#F2ECE0}</style>
+        <path class="hs" d="M54.51,231.67v-1.92h22.98v1.92h-22.98Z"/><path class="hs" d="M205.96,231.55v-1.92h22.98v1.92h-22.98Z"/><path class="hs" d="M150.64,190.58h-8.91v-124.7h8.91v124.7Z"/><path class="hs" d="M132.82,83.7v8.91h-62.36v-8.91h62.36Z"/><path class="hs" d="M132.82,65.89v8.91h-62.36v-8.91h62.36Z"/><path class="hs" d="M132.82,110.41h-62.36v-8.91h62.36v8.91Z"/><path class="hs" d="M123.91,190.53v-17.76h8.91v17.76h-8.91Z"/><path class="hs" d="M207.3,110.44v-.02h-3.21v-35.62h-26.73v-8.91h-8.91v26.39h8.91v-8.57h17.82v26.71h-26.73v.02h-8.91v17.81h8.91v-10.04h35.57v10.04h9.04v-17.81h-5.76Z"/><path class="hs" d="M168.46,137.15v53.38h35.64v-53.38h-35.64ZM195.18,181.66h-17.82v-35.59h17.82v35.59Z"/><path class="hs" d="M97.18,172.82h8.91v17.75h-8.91v-17.75Z"/><path class="hs" d="M106.07,154.95v-8.88h-8.85v8.88h-26.75v8.91h62.36v-8.91h-26.75Z"/><path class="hs" d="M132.82,128.22h-8.91v-8.88h-8.91v8.88h-26.73v-8.88h-8.91v8.88h-8.91v8.9h8.91v8.91h8.91v-8.91h26.73v8.91h8.91v-8.91h8.91v-8.9Z"/><path class="hs" d="M79.19,190.53h-8.73v-17.75c2.79,0,5.54-.01,8.28.03.22,0,.63.38.63.58.01,5.66-.02,11.33-.05,16.99,0,.03-.05.06-.13.16Z"/>
+        <text style="font-family:Montserrat,sans-serif;font-size:16.63px;letter-spacing:.2em;fill:#F2ECE0" transform="translate(86.82 236.01)"><tspan x="0" y="0">SANCHAGE</tspan></text>
+        <path class="hs" d="M231.78,43.62h-45.51v4.45h0v8.88h35.64v142.57H61.55V57.14h44.54v-9.07h0v-4.45h-57.91v169.04h187.09V43.62h-3.49Z"/><path class="hs" d="M123.91,43.62v13.33h44.54v-13.33h-44.54Z"/>
+      </svg>
+    </div>
+    <div class="header-name">三茶阁 <span>SANCHAGE</span></div>
+  </a>
+  <nav class="header-nav">
+    <a href="../#brand">品牌</a><a href="./" style="color:var(--white)">产品</a><a href="../#origin">产地</a><a href="../#channel">购买</a>
+    <button class="lang-toggle active" onclick="setLang('zh')">中</button>
+    <button class="lang-toggle" onclick="setLang('en')">EN</button>
+  </nav>
+</header>
+
+<div class="page">
+  <div class="list-hero">
+    <div class="list-hero-eyebrow">SANCHAGE · PRODUCT LINE · 福鼎臻品白茶</div>
+    <h1 class="list-hero-title" data-zh="每款都有来历。" data-en="Every tea has a story.">每款都有来历。</h1>
+    <p class="list-hero-sub" data-zh="磻溪 · 管阳 · 两地山场 · 四款系列 · 一脉相承" data-en="Panxi · Guanyang · Two origins · Four series · One legacy">磻溪 · 管阳 · 两地山场 · 四款系列 · 一脉相承</p>
+    <div class="list-filter">
+      <button class="filter-btn active" onclick="filterProducts('all')" data-zh="全部" data-en="ALL">全部</button>
+      <button class="filter-btn" onclick="filterProducts('panxi')" data-zh="磻溪产区" data-en="PANXI">磻溪产区</button>
+      <button class="filter-btn" onclick="filterProducts('guanyang')" data-zh="管阳产区" data-en="GUANYANG">管阳产区</button>
+      <button class="filter-btn" onclick="filterProducts('aged')" data-zh="陈年茶" data-en="AGED">陈年茶</button>
+      <button class="filter-btn" onclick="filterProducts('wild')" data-zh="荒野系列" data-en="WILD">荒野系列</button>
+    </div>
+  </div>
+
+  <div class="products-section">
+    <div class="products-label">
+      <span class="products-label-num">04 · PRODUCTS</span>
+      <span style="font-size:13px;color:var(--muted);letter-spacing:.1em">三茶阁出品</span>
+      <span class="products-label-en">SANCHAGE COLLECTION</span>
+    </div>
+    <div class="products-grid" id="products-grid">
+
+      <!-- 静芯 · 白毫银针 -->
+      <div class="product-card" data-origins="guanyang" data-type="fresh">
+        <div class="card-img" style="background:#1E2020">
+          <div class="card-img-char" style="color:rgba(242,236,224,.12)">芯</div>
+          <div class="card-badge" style="background:var(--ink);color:var(--gold);border:.5px solid rgba(184,160,112,.3)">JINGXIN</div>
+          <div class="card-series-tag">管阳 740m</div>
+        </div>
+        <div class="card-body">
+          <div class="card-eyebrow">
+            <span class="card-series" style="color:var(--gold)">SILVER NEEDLE · 白毫银针</span>
+            <span class="card-vintage">2023 春</span>
+          </div>
+          <div class="card-name">静芯</div>
+          <div class="card-sub" style="color:var(--gold)">Quiet Heart</div>
+          <p class="card-tagline" style="border-color:var(--gold)">高山之上，静心入定。<br>管阳 740m 单芽，毫香清扬，山场气最烈。</p>
+          <div class="card-meta">
+            <div class="card-meta-item"><div class="card-meta-k">ORIGIN</div><div class="card-meta-v">管阳 740m</div></div>
+            <div class="card-meta-item"><div class="card-meta-k">GRADE</div><div class="card-meta-v">白毫银针</div></div>
+            <div class="card-meta-item"><div class="card-meta-k">FORMAT</div><div class="card-meta-v">50g 铁罐</div></div>
+          </div>
+          <div class="card-footer">
+            <div class="card-flavor-row">
+              <div class="card-flavor-dot" style="background:#1E2020" title="毫香 92%"></div>
+              <div class="card-flavor-dot" style="background:#3A6B4A" title="花香 88%"></div>
+              <div class="card-flavor-dot" style="background:#AB0002" title="山场 90%"></div>
+            </div>
+            <a href="./jingxin.html" class="card-cta">查看详情 →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 芳华 · 白牡丹 -->
+      <div class="product-card" data-origins="panxi" data-type="fresh">
+        <div class="card-img" style="background:#F2ECE0;border-bottom:1px solid var(--border)">
+          <div class="card-img-char" style="color:rgba(171,0,2,.1)">华</div>
+          <div class="card-badge" style="background:var(--red);color:var(--white)">FANGHUA</div>
+          <div class="card-series-tag">磻溪 560m</div>
+        </div>
+        <div class="card-body">
+          <div class="card-eyebrow">
+            <span class="card-series" style="color:var(--red)">WHITE PEONY · 白牡丹</span>
+            <span class="card-vintage">2023 春</span>
+          </div>
+          <div class="card-name">芳华</div>
+          <div class="card-sub" style="color:var(--red)">Flower Prime</div>
+          <p class="card-tagline" style="border-color:var(--red)">花开磻溪，芳华正好。<br>磻溪春芽，一叶一芽，花香蜜韵，柔润醇厚。</p>
+          <div class="card-meta">
+            <div class="card-meta-item"><div class="card-meta-k">ORIGIN</div><div class="card-meta-v">磻溪 560m</div></div>
+            <div class="card-meta-item"><div class="card-meta-k">GRADE</div><div class="card-meta-v">白牡丹</div></div>
+            <div class="card-meta-item"><div class="card-meta-k">FORMAT</div><div class="card-meta-v">200g 饼装</div></div>
+          </div>
+          <div class="card-footer">
+            <div class="card-flavor-row">
+              <div class="card-flavor-dot" style="background:var(--red)" title="花香 88%"></div>
+              <div class="card-flavor-dot" style="background:var(--green)" title="甜度 76%"></div>
+              <div class="card-flavor-dot" style="background:var(--muted)" title="回甘 82%"></div>
+            </div>
+            <a href="./fanghua.html" class="card-cta">查看详情 →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 翠微 · 寿眉 -->
+      <div class="product-card" data-origins="guanyang" data-type="aged">
+        <div class="card-img" style="background:#C6D5BF">
+          <div class="card-img-char" style="color:rgba(58,107,74,.2)">微</div>
+          <div class="card-badge" style="background:var(--green);color:var(--white)">CUIWEI</div>
+          <div class="card-series-tag">管阳 740m</div>
+        </div>
+        <div class="card-body">
+          <div class="card-eyebrow">
+            <span class="card-series" style="color:var(--green)">SHOUMEI · 寿眉 · 陈年</span>
+            <span class="card-vintage">2021 秋</span>
+          </div>
+          <div class="card-name">翠微</div>
+          <div class="card-sub" style="color:var(--green)">Jade Mist</div>
+          <p class="card-tagline" style="border-color:var(--green)">玉青山野，陈年化蜜。<br>管阳高山寿眉，三年仓储，枣香渐显。</p>
+          <div class="card-meta">
+            <div class="card-meta-item"><div class="card-meta-k">ORIGIN</div><div class="card-meta-v">管阳 740m</div></div>
+            <div class="card-meta-item"><div class="card-meta-k">GRADE</div><div class="card-meta-v">寿眉·老白茶</div></div>
+            <div class="card-meta-item"><div class="card-meta-k">FORMAT</div><div class="card-meta-v">300g 饼装</div></div>
+          </div>
+          <div class="card-footer">
+            <div class="card-flavor-row">
+              <div class="card-flavor-dot" style="background:var(--green)" title="醇厚度 88%"></div>
+              <div class="card-flavor-dot" style="background:var(--brown)" title="甜度 82%"></div>
+              <div class="card-flavor-dot" style="background:var(--muted)" title="山场 85%"></div>
+            </div>
+            <a href="./cuiwei.html" class="card-cta">查看详情 →</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 荒野 · 荒野白茶 -->
+      <div class="product-card" data-origins="panxi guanyang" data-type="wild">
+        <div class="card-img" style="background:#2A1F0F">
+          <div class="card-img-char" style="color:rgba(184,160,112,.2)">野</div>
+          <div class="card-badge" style="background:var(--gold);color:var(--wild)">WILD · 限量</div>
+          <div class="card-series-tag" style="background:rgba(184,160,112,.12);border-color:rgba(184,160,112,.25);color:var(--gold)">磻溪·管阳 野生</div>
+        </div>
+        <div class="card-body">
+          <div class="card-eyebrow">
+            <span class="card-series" style="color:var(--brown)">WILD WHITE TEA · 荒野银针</span>
+            <span class="card-vintage">2023 春 · 限量</span>
+          </div>
+          <div class="card-name">荒野</div>
+          <div class="card-sub" style="color:var(--brown)">Wilderness</div>
+          <p class="card-tagline" style="border-color:var(--gold)">不种，不管，不采边。<br>野生古茶树，山场韵最烈，一年一季。</p>
+          <div class="card-meta">
+            <div class="card-meta-item"><div class="card-meta-k">ORIGIN</div><div class="card-meta-v">磻溪·管阳野生</div></div>
+            <div class="card-meta-item"><div class="card-meta-k">GRADE</div><div class="card-meta-v">荒野银针</div></div>
+            <div class="card-meta-item"><div class="card-meta-k">FORMAT</div><div class="card-meta-v">50g 铁罐</div></div>
+          </div>
+          <div class="card-footer">
+            <div class="card-flavor-row">
+              <div class="card-flavor-dot" style="background:var(--gold)" title="山场 98%"></div>
+              <div class="card-flavor-dot" style="background:var(--brown)" title="回甘 92%"></div>
+              <div class="card-flavor-dot" style="background:var(--muted)" title="毫香 88%"></div>
+            </div>
+            <a href="./wild.html" class="card-cta">查看详情 →</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Comparison table -->
+  <div class="compare-strip" style="position:relative;z-index:1">
+    <div class="compare-header">
+      <div><div class="compare-title">四款对比</div><div class="compare-sub">PRODUCT COMPARISON</div></div>
+      <div style="font-family:Montserrat,sans-serif;font-size:9px;letter-spacing:.15em;color:rgba(184,160,112,.5)">← 横向阅读</div>
+    </div>
+    <div class="compare-grid">
+      <div class="compare-col">
+        <div class="compare-name" style="color:#B8A070">静芯</div>
+        <div class="compare-grade" style="color:#B8A070">白毫银针 · 管阳</div>
+        <div class="compare-row"><span class="compare-k">产地</span><span class="compare-v" style="color:#B8A070">管阳 740m</span></div>
+        <div class="compare-row"><span class="compare-k">年份</span><span class="compare-v" style="color:var(--white)">2023 春</span></div>
+        <div class="compare-row"><span class="compare-k">毫香</span><div class="compare-bar-wrap"><div class="compare-bar" style="width:92%;background:#B8A070"></div></div><span style="font-family:Montserrat,sans-serif;font-size:8px;color:rgba(255,255,255,.5)">92</span></div>
+        <div class="compare-row"><span class="compare-k">回甘</span><div class="compare-bar-wrap"><div class="compare-bar" style="width:85%;background:#B8A070"></div></div><span style="font-family:Montserrat,sans-serif;font-size:8px;color:rgba(255,255,255,.5)">85</span></div>
+        <div class="compare-row"><span class="compare-k">山场</span><div class="compare-bar-wrap"><div class="compare-bar" style="width:90%;background:#B8A070"></div></div><span style="font-family:Montserrat,sans-serif;font-size:8px;color:rgba(255,255,255,.5)">90</span></div>
+        <div class="compare-row"><span class="compare-k">规格</span><span class="compare-v" style="color:var(--white)">50g 铁罐</span></div>
+      </div>
+      <div class="compare-col">
+        <div class="compare-name" style="color:#AB0002">芳华</div>
+        <div class="compare-grade" style="color:#AB0002">白牡丹 · 磻溪</div>
+        <div class="compare-row"><span class="compare-k">产地</span><span class="compare-v" style="color:#AB0002">磻溪 560m</span></div>
+        <div class="compare-row"><span class="compare-k">年份</span><span class="compare-v" style="color:var(--white)">2023 春</span></div>
+        <div class="compare-row"><span class="compare-k">花香</span><div class="compare-bar-wrap"><div class="compare-bar" style="width:88%;background:#AB0002"></div></div><span style="font-family:Montserrat,sans-serif;font-size:8px;color:rgba(255,255,255,.5)">88</span></div>
+        <div class="compare-row"><span class="compare-k">醇厚</span><div class="compare-bar-wrap"><div class="compare-bar" style="width:80%;background:#AB0002"></div></div><span style="font-family:Montserrat,sans-serif;font-size:8px;color:rgba(255,255,255,.5)">80</span></div>
+        <div class="compare-row"><span class="compare-k">山场</span><div class="compare-bar-wrap"><div class="compare-bar" style="width:82%;background:#AB0002"></div></div><span style="font-family:Montserrat,sans-serif;font-size:8px;color:rgba(255,255,255,.5)">82</span></div>
+        <div class="compare-row"><span class="compare-k">规格</span><span class="compare-v" style="color:var(--white)">200g 饼装</span></div>
+      </div>
+      <div class="compare-col">
+        <div class="compare-name" style="color:#C6D5BF">翠微</div>
+        <div class="compare-grade" style="color:#C6D5BF">寿眉陈年 · 管阳</div>
+        <div class="compare-row"><span class="compare-k">产地</span><span class="compare-v" style="color:#C6D5BF">管阳 740m</span></div>
+        <div class="compare-row"><span class="compare-k">年份</span><span class="compare-v" style="color:var(--white)">2021 秋</span></div>
+        <div class="compare-row"><span class="compare-k">醇厚</span><div class="compare-bar-wrap"><div class="compare-bar" style="width:88%;background:#C6D5BF"></div></div><span style="font-family:Montserrat,sans-serif;font-size:8px;color:rgba(255,255,255,.5)">88</span></div>
+        <div class="compare-row"><span class="compare-k">甜度</span><div class="compare-bar-wrap"><div class="compare-bar" style="width:82%;background:#C6D5BF"></div></div><span style="font-family:Montserrat,sans-serif;font-size:8px;color:rgba(255,255,255,.5)">82</span></div>
+        <div class="compare-row"><span class="compare-k">山场</span><div class="compare-bar-wrap"><div class="compare-bar" style="width:85%;background:#C6D5BF"></div></div><span style="font-family:Montserrat,sans-serif;font-size:8px;color:rgba(255,255,255,.5)">85</span></div>
+        <div class="compare-row"><span class="compare-k">规格</span><span class="compare-v" style="color:var(--white)">300g 饼装</span></div>
+      </div>
+      <div class="compare-col">
+        <div class="compare-name" style="color:#B8A070">荒野</div>
+        <div class="compare-grade" style="color:#B8A070">荒野银针 · 野生</div>
+        <div class="compare-row"><span class="compare-k">产地</span><span class="compare-v" style="color:#B8A070">磻溪·管阳野生</span></div>
+        <div class="compare-row"><span class="compare-k">年份</span><span class="compare-v" style="color:var(--white)">2023 春</span></div>
+        <div class="compare-row"><span class="compare-k">毫香</span><div class="compare-bar-wrap"><div class="compare-bar" style="width:88%;background:#B8A070"></div></div><span style="font-family:Montserrat,sans-serif;font-size:8px;color:rgba(255,255,255,.5)">88</span></div>
+        <div class="compare-row"><span class="compare-k">回甘</span><div class="compare-bar-wrap"><div class="compare-bar" style="width:92%;background:#B8A070"></div></div><span style="font-family:Montserrat,sans-serif;font-size:8px;color:rgba(255,255,255,.5)">92</span></div>
+        <div class="compare-row"><span class="compare-k">山场</span><div class="compare-bar-wrap"><div class="compare-bar" style="width:98%;background:#B8A070"></div></div><span style="font-family:Montserrat,sans-serif;font-size:8px;color:rgba(255,255,255,.5)">98</span></div>
+        <div class="compare-row"><span class="compare-k">规格</span><span class="compare-v" style="color:var(--white)">50g 铁罐</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Brand values -->
+  <div class="brand-strip">
+    <div class="brand-strip-left">
+      <h3 data-zh="为什么选三茶阁？" data-en="Why SANCHAGE?">为什么选三茶阁？</h3>
+      <p data-zh="三茶阁坚持小批量，每款茶都有明确的山场来源、采摘时间与制作工艺。我们不卖便宜茶，只卖值得被认真对待的好茶。" data-en="Sanchage insists on small batches. Every tea has a clear mountain origin, harvest date, and documented process. We don't sell cheap tea — only tea worth taking seriously.">三茶阁坚持小批量，每款茶都有明确的山场来源、采摘时间与制作工艺。我们不卖便宜茶，只卖值得被认真对待的好茶。</p>
+    </div>
+    <div class="brand-strip-right">
+      <div class="brand-value">
+        <div class="brand-value-num">01</div>
+        <div class="brand-value-text"><h4>溯源可查</h4><p>每款茶附山场信息、采摘时间、制茶工艺，可查、可信、可传。</p></div>
+      </div>
+      <div class="brand-value">
+        <div class="brand-value-num">02</div>
+        <div class="brand-value-text"><h4>小批精选</h4><p>不追量产，只做值得认真对待的茶。每年出品款数有限，先到先得。</p></div>
+      </div>
+      <div class="brand-value">
+        <div class="brand-value-num">03</div>
+        <div class="brand-value-text"><h4>诚实标注</h4><p>年份、产地、级别，一字不虚。标了什么，就是什么。</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div style="margin-top:0;padding:40px;background:var(--ink);border:1px solid rgba(184,160,112,.2);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;position:relative;z-index:1">
+    <div>
+      <div style="font-size:22px;font-weight:700;color:var(--white);letter-spacing:.08em" data-zh="喜欢哪款，微信小店直接购买。" data-en="Found your tea? Buy directly on WeChat Shop.">喜欢哪款，微信小店直接购买。</div>
+      <div style="font-size:13px;color:var(--gold);margin-top:6px;opacity:.8">全系列均有现货 · 顺丰发货</div>
+    </div>
+    <a href="https://store.weixin.qq.com/shop/b/CmrLejp2VwtbE3c?entrance_id=h5" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:12px;padding:14px 32px;background:var(--green);color:var(--white);font-family:'Noto Serif SC',serif;font-size:14px;letter-spacing:.1em;text-decoration:none;transition:all .3s" onmouseover="this.style.background='#2A4F37'" onmouseout="this.style.background='#3A6B4A'">微信小店购买</a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <strong>三茶阁 SANCHAGE</strong>
+  静芯 · 芳华 · 翠微 · 荒野 · 四款臻品白茶<br>
+  <span style="font-size:11px;opacity:.7">小而美的臻品白茶 · 每款都有来历 · sanchage.com</span><br>
+  <span style="font-size:11px;opacity:.5"><a href="../" style="color:var(--gold);text-decoration:none">← 返回首页</a></span>
+</footer>
+
+<script>
+function filterProducts(type){
+  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
+  event.target.classList.add('active');
+  document.querySelectorAll('.product-card').forEach(card=>{
+    const origins=card.dataset.origins||'';
+    const cardType=card.dataset.type||'';
+    if(type==='all'){card.style.display='';return;}
+    if(type==='panxi'){card.style.display=origins.includes('panxi')?'':'none';return;}
+    if(type==='guanyang'){card.style.display=origins.includes('guanyang')?'':'none';return;}
+    if(type==='aged'){card.style.display=cardType==='aged'?'':'none';return;}
+    if(type==='wild'){card.style.display=cardType==='wild'?'':'none';return;}
+  });
+}
+
+const lang=localStorage.getItem('lang')||'zh';setLang(lang);
+function setLang(l){document.querySelectorAll('[data-zh]').forEach(el=>{el.innerHTML=el.dataset[l]||el.dataset.zh;});document.querySelectorAll('.lang-toggle').forEach(btn=>{btn.classList.toggle('active',btn.textContent.trim()===(l==='zh'?'中':'EN'));});localStorage.setItem('lang',l);}
+</script>
+</body>
+</html>

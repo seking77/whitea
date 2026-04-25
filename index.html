@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="三茶阁 SANCHAGE · 小众精品福鼎白茶 · 白茶有三，阁藏臻品">
+<title>三茶阁 SANCHAGE · 福鼎白茶 · 白茶有三，阁藏臻品</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;700&family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ═══ TOKENS ═══ */
+:root {
+  --red:        #AB0002;
+  --red-logo:   #C3272B;
+  --green:      #3A6B4A;
+  --brown:      #8B4513;
+  --jade:       #C6D5BF;
+  --paper:      #F2ECE0;
+  --ink:        #1E2020;
+  --gold:       #B8A070;
+  --wild:       #2A1F0F;
+  --white:      #FFFFFF;
+  --border:     #D8CFBE;
+  --muted:      #6A5F50;
+  --bg-light:   #FDFCFA;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: 'Noto Serif SC', serif;
+  font-size: 14px;
+  line-height: 1.8;
+  -webkit-font-smoothing: antialiased;
+}
+::selection { background: var(--red); color: var(--white); }
+.en { font-family: 'Montserrat', sans-serif; text-transform: uppercase; letter-spacing: .2em; }
+
+body::before {
+  content: '';
+  position: fixed; inset: 0; pointer-events: none; z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 180px; opacity: .5;
+}
+
+/* ═══ HEADER ═══ */
+.site-header {
+  position: sticky; top: 0; z-index: 200;
+  background: var(--ink);
+  border-bottom: 2px solid var(--red);
+  height: 60px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 44px;
+  box-shadow: 0 2px 12px rgba(0,0,0,.18);
+}
+.header-brand { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+.header-seal {
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.header-seal svg { width: 36px; height: 36px; }
+.header-name { color: var(--white); font-weight: 700; font-size: 17px; letter-spacing: .12em; }
+.header-name span {
+  font-family: 'Montserrat', sans-serif; font-weight: 300; font-size: 10px;
+  color: var(--gold); margin-left: 10px; letter-spacing: .22em;
+}
+.header-nav { display: flex; gap: 4px; align-items: center; }
+.header-nav a {
+  font-family: 'Montserrat', sans-serif; font-size: 9px; letter-spacing: .14em;
+  color: var(--gold); text-decoration: none; padding: 5px 11px;
+  border: .5px solid rgba(184,160,112,.3); border-radius: 2px; transition: all .2s;
+}
+.header-nav a:hover { background: rgba(184,160,112,.12); color: var(--white); }
+.lang-toggle {
+  font-family: 'Montserrat', sans-serif; font-size: 9px; letter-spacing: .14em;
+  color: var(--muted); background: transparent; border: .5px solid rgba(184,160,112,.2);
+  padding: 4px 8px; cursor: pointer; transition: all .2s; border-radius: 2px;
+}
+.lang-toggle.active { color: var(--gold); border-color: rgba(184,160,112,.5); }
+.lang-toggle:hover { color: var(--white); }
+
+/* ═══ SECTION DIVIDER ═══ */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold) 30%, var(--gold) 70%, transparent);
+  opacity: .3; position: relative; z-index: 1;
+}
+
+/* ═══════════════════════════════
+   01 · HERO
+═══════════════════════════════ */
+.hero {
+  min-height: 100vh; position: relative;
+  display: flex; align-items: center;
+  background: var(--ink); overflow: hidden;
+}
+.hero-bg {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, #1E2020 0%, #2A2A2A 60%, #1A2218 100%);
+}
+.hero-deco-circle {
+  position: absolute; border-radius: 50%;
+  border: 1px solid rgba(184,160,112,.15);
+}
+.hero-deco-circle:nth-child(1) { width: 600px; height: 600px; right: -100px; top: -100px; }
+.hero-deco-circle:nth-child(2) { width: 400px; height: 400px; right: 50px; top: 50px; border-color: rgba(171,0,2,.1); }
+.hero-deco-circle:nth-child(3) { width: 200px; height: 200px; right: 150px; top: 150px; border-color: rgba(184,160,112,.08); }
+.hero-content {
+  position: relative; z-index: 2;
+  max-width: 1200px; margin: 0 auto; padding: 0 44px;
+  width: 100%;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+  padding-top: 60px; padding-bottom: 60px;
+}
+.hero-left {}
+.hero-eyebrow {
+  font-family: 'Montserrat', sans-serif; font-size: 10px; letter-spacing: .3em;
+  color: var(--gold); margin-bottom: 32px;
+  display: flex; align-items: center; gap: 14px;
+}
+.hero-eyebrow::before { content:''; width: 32px; height: 1px; background: var(--red); }
+.hero-tagline-main {
+  font-size: clamp(42px,5.5vw,68px); font-weight: 700;
+  color: var(--white); letter-spacing: .12em; line-height: 1.2;
+  margin-bottom: 12px;
+}
+.hero-tagline-en {
+  font-family: 'Montserrat', sans-serif; font-size: 11px; letter-spacing: .35em;
+  color: var(--gold); margin-bottom: 32px; font-weight: 300;
+}
+.hero-desc {
+  font-size: 15px; color: rgba(242,236,224,.7); line-height: 2.1;
+  max-width: 420px;
+  border-left: 2px solid var(--red); padding-left: 20px;
+  margin-bottom: 48px;
+}
+.hero-cta-group { display: flex; gap: 14px; flex-wrap: wrap; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 32px; background: var(--red); color: var(--white);
+  font-family: 'Noto Serif SC', serif; font-size: 14px; letter-spacing: .1em;
+  text-decoration: none; transition: all .3s; border: 1px solid var(--red);
+}
+.btn-primary:hover { background: #8A0001; border-color: #8A0001; }
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 10px;
+  padding: 14px 32px; background: transparent; color: var(--gold);
+  font-family: 'Montserrat', sans-serif; font-size: 10px; letter-spacing: .2em;
+  text-decoration: none; transition: all .3s; border: 1px solid rgba(184,160,112,.4);
+}
+.btn-ghost:hover { background: rgba(184,160,112,.1); color: var(--white); }
+.hero-right {
+  display: flex; flex-direction: column; gap: 20px; align-items: flex-end;
+}
+.hero-seal-large {
+  width: 220px; height: 220px;
+  border: 1px solid rgba(184,160,112,.2); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(171,0,2,.06);
+}
+.hero-seal-large svg { width: 160px; height: 160px; }
+.hero-stats {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+  border: 1px solid rgba(184,160,112,.2); width: 220px;
+}
+.hero-stat {
+  padding: 16px 18px; border-right: 1px solid rgba(184,160,112,.2);
+}
+.hero-stat:nth-child(2) { border-right: none; }
+.hero-stat:nth-child(3) { border-top: 1px solid rgba(184,160,112,.2); }
+.hero-stat:nth-child(4) { border-top: 1px solid rgba(184,160,112,.2); border-right: none; }
+.hero-stat-k { font-family:'Montserrat',sans-serif; font-size:8px; letter-spacing:.2em; color:rgba(184,160,112,.7); margin-bottom:5px; }
+.hero-stat-v { font-size:18px; font-weight:700; color:var(--white); letter-spacing:.05em; }
+
+/* ═══════════════════════════════
+   02 · BRAND
+═══════════════════════════════ */
+.brand-section {
+  max-width: 1200px; margin: 0 auto; padding: 96px 44px;
+  position: relative; z-index: 1;
+}
+.section-eyebrow {
+  display: flex; align-items: center; gap: 16px; margin-bottom: 56px;
+}
+.section-eyebrow::before, .section-eyebrow::after {
+  content: ''; flex: 1; height: 1px; background: var(--border);
+}
+.section-eyebrow-text {
+  font-family: 'Montserrat', sans-serif; font-size: 9px; letter-spacing: .3em; color: var(--muted);
+  display: flex; align-items: center; gap: 8px; white-space: nowrap;
+}
+.section-eyebrow-diamond {
+  width: 5px; height: 5px; background: var(--red); transform: rotate(45deg); flex-shrink: 0;
+}
+.brand-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; }
+.brand-item {
+  padding: 36px 32px; border-right: 1px solid var(--border);
+}
+.brand-item:last-child { border-right: none; }
+.brand-num {
+  font-family: 'Montserrat', sans-serif; font-size: 9px; letter-spacing: .22em;
+  color: var(--gold); margin-bottom: 20px;
+}
+.brand-title { font-size: 28px; font-weight: 700; letter-spacing: .1em; margin-bottom: 16px; line-height: 1.3; }
+.brand-body { font-size: 14px; color: var(--muted); line-height: 2.1; }
+.brand-quote {
+  margin-top: 56px; padding: 36px 44px;
+  background: var(--ink); border-left: 4px solid var(--red);
+  position: relative;
+}
+.brand-quote-text {
+  font-size: 22px; color: var(--white); letter-spacing: .1em; line-height: 1.8;
+  font-weight: 300;
+}
+.brand-quote-en {
+  font-family: 'Montserrat', sans-serif; font-size: 10px; letter-spacing: .3em;
+  color: var(--gold); margin-top: 16px;
+}
+
+/* ═══════════════════════════════
+   03 · PRODUCTS
+═══════════════════════════════ */
+.products-section {
+  background: var(--bg-light); padding: 96px 0;
+  position: relative; z-index: 1;
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+}
+.products-inner { max-width: 1200px; margin: 0 auto; padding: 0 44px; }
+.products-header {
+  display: flex; align-items: flex-end; justify-content: space-between;
+  margin-bottom: 48px;
+}
+.products-title { font-size: 36px; font-weight: 700; letter-spacing: .06em; }
+.products-subtitle { font-family:'Montserrat',sans-serif; font-size:9px; letter-spacing:.3em; color:var(--muted); }
+.products-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+.product-card {
+  border: 1px solid var(--border); background: var(--white);
+  margin-right: -1px; transition: border-color .3s, transform .3s; position: relative;
+  overflow: hidden;
+}
+.product-card:last-child { margin-right: 0; }
+.product-card:hover { border-color: var(--green); z-index: 1; }
+.product-card-img {
+  aspect-ratio: 3/4; position: relative; overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+}
+.product-card-img-placeholder {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 52px; letter-spacing: .1em; font-weight: 700; color: rgba(255,255,255,.3);
+}
+.product-card-body { padding: 20px; }
+.product-card-series {
+  font-family: 'Montserrat', sans-serif; font-size: 8px; letter-spacing: .22em;
+  color: var(--gold); margin-bottom: 6px; text-transform: uppercase;
+}
+.product-card-name { font-size: 24px; font-weight: 700; letter-spacing: .1em; margin-bottom: 4px; }
+.product-card-grade {
+  font-family: 'Montserrat', sans-serif; font-size: 9px; letter-spacing: .15em;
+  color: var(--muted); margin-bottom: 12px;
+}
+.product-card-desc { font-size: 13px; color: var(--muted); line-height: 1.9; margin-bottom: 20px; }
+.product-card-link {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'Montserrat', sans-serif; font-size: 9px; letter-spacing: .2em;
+  color: var(--green); text-decoration: none;
+}
+.product-card-link::after { content: '→'; }
+.product-card-link:hover { color: var(--ink); }
+
+/* ═══════════════════════════════
+   04 · ORIGIN
+═══════════════════════════════ */
+.origin-section {
+  max-width: 1200px; margin: 0 auto; padding: 96px 44px;
+  position: relative; z-index: 1;
+}
+.origin-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; }
+.origin-left-panel { padding-right: 60px; }
+.origin-right-panel { padding-left: 60px; border-left: 1px solid var(--border); }
+.origin-panel-label {
+  font-family: 'Montserrat', sans-serif; font-size: 8px; letter-spacing: .22em;
+  color: var(--gold); margin-bottom: 12px; text-transform: uppercase;
+}
+.origin-panel-name { font-size: 44px; font-weight: 700; letter-spacing: .1em; line-height: 1.1; margin-bottom: 6px; }
+.origin-panel-en {
+  font-family: 'Montserrat', sans-serif; font-size: 10px; letter-spacing: .2em;
+  color: var(--muted); margin-bottom: 28px;
+}
+.origin-alt-bar {
+  height: 4px; background: var(--border); margin-bottom: 24px; position: relative;
+}
+.origin-alt-fill {
+  height: 100%; background: var(--green); transition: width 1s;
+}
+.origin-alt-label {
+  display: flex; align-items: baseline; gap: 6px; margin-bottom: 6px;
+}
+.origin-alt-num { font-size: 32px; font-weight: 700; color: var(--green); }
+.origin-alt-unit { font-family: 'Montserrat', sans-serif; font-size: 11px; color: var(--muted); letter-spacing: .1em; }
+.origin-yun { font-size: 22px; font-weight: 700; color: var(--green); margin-bottom: 8px; letter-spacing: .1em; }
+.origin-yun-desc { font-size: 13px; color: var(--muted); line-height: 1.9; }
+.origin-facts { margin-top: 28px; display: grid; grid-template-columns: 1fr 1fr; gap: 0; border-top: 1px solid var(--border); }
+.origin-fact { padding: 16px 0; border-bottom: 1px solid var(--border); padding-right: 20px; }
+.origin-fact-k { font-family:'Montserrat',sans-serif; font-size:8px; letter-spacing:.2em; color:var(--gold); margin-bottom:4px; }
+.origin-fact-v { font-size: 14px; color: var(--ink); }
+.origin-mountain {
+  aspect-ratio: 4/3; background: #C6D5BF;
+  display: flex; align-items: flex-end; overflow: hidden; position: relative;
+  margin-bottom: 0;
+}
+.origin-mountain svg { width: 100%; height: 100%; }
+
+/* ═══════════════════════════════
+   05 · STORY
+═══════════════════════════════ */
+.story-section {
+  background: var(--ink); padding: 96px 0;
+  position: relative; z-index: 1;
+}
+.story-inner { max-width: 1200px; margin: 0 auto; padding: 0 44px; }
+.story-headline {
+  font-size: clamp(28px, 4vw, 48px); color: var(--white);
+  font-weight: 700; letter-spacing: .08em; line-height: 1.3;
+  margin-bottom: 8px;
+}
+.story-headline-en {
+  font-family: 'Montserrat', sans-serif; font-size: 10px; letter-spacing: .3em;
+  color: var(--gold); margin-bottom: 48px;
+}
+.story-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; border-top: 1px solid rgba(184,160,112,.2); }
+.story-item { padding: 40px 32px; border-right: 1px solid rgba(184,160,112,.15); }
+.story-item:last-child { border-right: none; }
+.story-item-num {
+  font-family: 'Montserrat', sans-serif; font-size: 9px; letter-spacing: .22em;
+  color: var(--gold); margin-bottom: 20px; opacity: .7;
+}
+.story-item-dot {
+  width: 10px; height: 10px; background: var(--green);
+  transform: rotate(45deg); margin-bottom: 20px;
+}
+.story-year {
+  display: flex; align-items: baseline; gap: 10px; margin-bottom: 12px;
+}
+.story-year-cn { font-size: 32px; font-weight: 700; color: var(--white); letter-spacing: .08em; }
+.story-year-char { font-size: 22px; color: var(--green); font-weight: 400; }
+.story-desc { font-size: 14px; color: rgba(242,236,224,.65); line-height: 2; }
+
+/* ═══════════════════════════════
+   06 · CHANNEL
+═══════════════════════════════ */
+.channel-section {
+  max-width: 1200px; margin: 0 auto; padding: 96px 44px;
+  position: relative; z-index: 1;
+}
+.channel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 48px; }
+.channel-card {
+  padding: 40px 44px; border: 1px solid var(--border);
+  margin-right: -1px; background: var(--white);
+}
+.channel-card:hover { border-color: var(--green); z-index: 1; }
+.channel-card-label {
+  font-family: 'Montserrat', sans-serif; font-size: 9px; letter-spacing: .22em;
+  color: var(--gold); margin-bottom: 14px;
+}
+.channel-card-name { font-size: 26px; font-weight: 700; letter-spacing: .08em; margin-bottom: 12px; }
+.channel-card-desc { font-size: 13px; color: var(--muted); line-height: 1.9; margin-bottom: 28px; }
+.btn-buy {
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 14px 32px; font-family: 'Noto Serif SC', serif;
+  font-size: 14px; letter-spacing: .1em; text-decoration: none; transition: all .3s;
+}
+.btn-wechat { background: var(--green); color: var(--white); }
+.btn-wechat:hover { background: var(--ink); }
+.btn-xhs {
+  background: transparent; color: var(--red);
+  border: 1px solid var(--red); font-family: 'Noto Serif SC', serif;
+  font-size: 14px; letter-spacing: .1em; text-decoration: none;
+  display: inline-flex; align-items: center; gap: 12px;
+  padding: 14px 32px; transition: all .3s;
+}
+.btn-xhs:hover { background: var(--red); color: var(--white); }
+.channel-note {
+  margin-top: 16px; font-family:'Montserrat',sans-serif; font-size:9px;
+  letter-spacing:.12em; color:var(--muted);
+}
+
+/* ═══ FOOTER ═══ */
+.site-footer {
+  background: var(--ink); border-top: 2px solid var(--red);
+  padding: 48px 44px 32px; position: relative; z-index: 1;
+}
+.footer-inner { max-width: 1200px; margin: 0 auto; }
+.footer-top { display: grid; grid-template-columns: 1fr 2fr 1fr; gap: 40px; margin-bottom: 40px; }
+.footer-brand-name { font-size: 20px; font-weight: 700; color: var(--white); letter-spacing: .12em; margin-bottom: 6px; }
+.footer-brand-en {
+  font-family:'Montserrat',sans-serif; font-size:10px; letter-spacing:.3em;
+  color:var(--gold); display:block; margin-bottom:12px;
+}
+.footer-brand-tagline { font-size:13px; color:rgba(242,236,224,.6); line-height:1.9; }
+.footer-nav-heading {
+  font-family:'Montserrat',sans-serif; font-size:8px; letter-spacing:.22em;
+  color:var(--gold); margin-bottom:16px; text-transform:uppercase;
+}
+.footer-nav-links { list-style:none; }
+.footer-nav-links li { margin-bottom:8px; }
+.footer-nav-links a {
+  font-size:13px; color:rgba(242,236,224,.6); text-decoration:none;
+  transition:color .2s;
+}
+.footer-nav-links a:hover { color:var(--white); }
+.footer-contact-item { margin-bottom:10px; font-size:13px; color:rgba(242,236,224,.6); }
+.footer-contact-item a { color:var(--gold); text-decoration:none; }
+.footer-contact-item a:hover { color:var(--white); }
+.footer-bottom {
+  border-top: 1px solid rgba(184,160,112,.2); padding-top: 24px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.footer-copy { font-size:11px; color:rgba(184,160,112,.5); letter-spacing:.06em; }
+.footer-icp { font-family:'Montserrat',sans-serif; font-size:9px; letter-spacing:.1em; color:rgba(184,160,112,.35); }
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 968px) {
+  .hero-content { grid-template-columns: 1fr; gap: 40px; }
+  .hero-right { align-items: flex-start; }
+  .brand-grid, .products-grid { grid-template-columns: 1fr 1fr; }
+  .products-grid .product-card:nth-child(2) { margin-right: 0; }
+  .origin-grid { grid-template-columns: 1fr; }
+  .origin-right-panel { padding-left: 0; border-left: none; border-top: 1px solid var(--border); padding-top: 40px; margin-top: 40px; }
+  .story-grid { grid-template-columns: 1fr 1fr; }
+  .channel-grid { grid-template-columns: 1fr; }
+  .channel-card { margin-right: 0; margin-bottom: -1px; }
+  .footer-top { grid-template-columns: 1fr; }
+  .site-header { padding: 0 20px; }
+  .header-nav { gap: 2px; }
+  .header-nav a { display: none; }
+  .header-nav a:last-child, .lang-toggle { display: flex; }
+}
+@media (max-width: 640px) {
+  .brand-grid, .products-grid, .story-grid { grid-template-columns: 1fr; }
+  .brand-item, .story-item { border-right: none; border-bottom: 1px solid rgba(184,160,112,.2); }
+  .product-card { margin-right: 0; margin-bottom: -1px; }
+  .hero-content, .brand-section, .origin-section, .channel-section { padding: 0 20px; }
+  .products-inner, .story-inner, .footer-inner { padding: 0 20px; }
+  .brand-section, .products-section, .origin-section, .channel-section { padding: 64px 0; }
+  .story-section { padding: 64px 0; }
+  .hero-tagline-main { font-size: 36px; }
+  .header-name span { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══ HEADER ═══ -->
+<header class="site-header">
+  <a href="/" class="header-brand">
+    <div class="header-seal">
+      <!-- 深色背景 logo：宣纸米反白 -->
+      <svg viewBox="0 0 283.46 283.46" xmlns="http://www.w3.org/2000/svg">
+        <style>.hs{fill:#F2ECE0}</style>
+        <path class="hs" d="M54.51,231.67v-1.92h22.98v1.92h-22.98Z"/>
+        <path class="hs" d="M205.96,231.55v-1.92h22.98v1.92h-22.98Z"/>
+        <path class="hs" d="M150.64,190.58h-8.91v-124.7h8.91v124.7Z"/>
+        <path class="hs" d="M132.82,83.7v8.91h-62.36v-8.91h62.36Z"/>
+        <path class="hs" d="M132.82,65.89v8.91h-62.36v-8.91h62.36Z"/>
+        <path class="hs" d="M132.82,110.41h-62.36v-8.91h62.36v8.91Z"/>
+        <path class="hs" d="M123.91,190.53v-17.76h8.91v17.76h-8.91Z"/>
+        <path class="hs" d="M207.3,110.44v-.02h-3.21v-35.62h-26.73v-8.91h-8.91v26.39h8.91v-8.57h17.82v26.71h-26.73v.02h-8.91v17.81h8.91v-10.04h35.57v10.04h9.04v-17.81h-5.76Z"/>
+        <path class="hs" d="M168.46,137.15v53.38h35.64v-53.38h-35.64ZM195.18,181.66h-17.82v-35.59h17.82v35.59Z"/>
+        <path class="hs" d="M97.18,172.82h8.91v17.75h-8.91v-17.75Z"/>
+        <path class="hs" d="M106.07,154.95v-8.88h-8.85v8.88h-26.75v8.91h62.36v-8.91h-26.75Z"/>
+        <path class="hs" d="M132.82,128.22h-8.91v-8.88h-8.91v8.88h-26.73v-8.88h-8.91v8.88h-8.91v8.9h8.91v8.91h8.91v-8.91h26.73v8.91h8.91v-8.91h8.91v-8.9Z"/>
+        <path class="hs" d="M79.19,190.53h-8.73v-17.75c2.79,0,5.54-.01,8.28.03.22,0,.63.38.63.58.01,5.66-.02,11.33-.05,16.99,0,.03-.05.06-.13.16Z"/>
+        <text style="font-family:Montserrat,sans-serif;font-size:16.63px;letter-spacing:.2em;fill:#F2ECE0" transform="translate(86.82 236.01)"><tspan x="0" y="0">SANCHAGE</tspan></text>
+        <path class="hs" d="M231.78,43.62h-45.51v4.45h0v8.88h35.64v142.57H61.55V57.14h44.54v-9.07h0v-4.45h-57.91v169.04h187.09V43.62h-3.49Z"/>
+        <path class="hs" d="M123.91,43.62v13.33h44.54v-13.33h-44.54Z"/>
+      </svg>
+    </div>
+    <div class="header-name">三茶阁 <span>SANCHAGE</span></div>
+  </a>
+  <nav class="header-nav">
+    <a href="#brand" data-zh="品牌" data-en="BRAND">品牌</a>
+    <a href="#products" data-zh="产品" data-en="PRODUCTS">产品</a>
+    <a href="#origin" data-zh="产地" data-en="ORIGIN">产地</a>
+    <a href="#channel" data-zh="购买" data-en="BUY">购买</a>
+    <button class="lang-toggle active" onclick="setLang('zh')">中</button>
+    <button class="lang-toggle" onclick="setLang('en')">EN</button>
+  </nav>
+</header>
+
+<!-- ═══ 01 · HERO ═══ -->
+<section class="hero" id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-deco-circle"></div>
+  <div class="hero-deco-circle"></div>
+  <div class="hero-deco-circle"></div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-eyebrow">FUJIAN · FUDING · BAIHAO SILVER NEEDLE</div>
+      <div class="hero-tagline-main" data-zh="白茶有三，<br>阁藏臻品" data-en="THREE TEAS,<br>ONE PAVILION">白茶有三，<br>阁藏臻品</div>
+      <div class="hero-tagline-en">WHITE TEA HAS THREE · THE PAVILION HOLDS THE FINEST</div>
+      <p class="hero-desc" data-zh="小众精品福鼎白茶，小而美，每款都有来历。静芯、芳华、翠微、荒野——四款，四座山，四种时光。" data-en="Small-batch premium Fuding white tea. Quiet Heart, Fanghua, Cuiwei, Wild Growth — four teas, four mountains, four moments in time.">小众精品福鼎白茶，小而美，每款都有来历。静芯、芳华、翠微、荒野——四款，四座山，四种时光。</p>
+      <div class="hero-cta-group">
+        <a href="#products" class="btn-primary" data-zh="探索系列" data-en="EXPLORE">探索系列</a>
+        <a href="#channel" class="btn-ghost" data-zh="立即购买" data-en="SHOP NOW">立即购买</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-seal-large">
+        <svg viewBox="0 0 283.46 283.46" xmlns="http://www.w3.org/2000/svg">
+          <style>.hl{fill:#F2ECE0;opacity:.85}</style>
+          <path class="hl" d="M54.51,231.67v-1.92h22.98v1.92h-22.98Z"/>
+          <path class="hl" d="M205.96,231.55v-1.92h22.98v1.92h-22.98Z"/>
+          <path class="hl" d="M150.64,190.58h-8.91v-124.7h8.91v124.7Z"/>
+          <path class="hl" d="M132.82,83.7v8.91h-62.36v-8.91h62.36Z"/>
+          <path class="hl" d="M132.82,65.89v8.91h-62.36v-8.91h62.36Z"/>
+          <path class="hl" d="M132.82,110.41h-62.36v-8.91h62.36v8.91Z"/>
+          <path class="hl" d="M123.91,190.53v-17.76h8.91v17.76h-8.91Z"/>
+          <path class="hl" d="M207.3,110.44v-.02h-3.21v-35.62h-26.73v-8.91h-8.91v26.39h8.91v-8.57h17.82v26.71h-26.73v.02h-8.91v17.81h8.91v-10.04h35.57v10.04h9.04v-17.81h-5.76Z"/>
+          <path class="hl" d="M168.46,137.15v53.38h35.64v-53.38h-35.64ZM195.18,181.66h-17.82v-35.59h17.82v35.59Z"/>
+          <path class="hl" d="M97.18,172.82h8.91v17.75h-8.91v-17.75Z"/>
+          <path class="hl" d="M106.07,154.95v-8.88h-8.85v8.88h-26.75v8.91h62.36v-8.91h-26.75Z"/>
+          <path class="hl" d="M132.82,128.22h-8.91v-8.88h-8.91v8.88h-26.73v-8.88h-8.91v8.88h-8.91v8.9h8.91v8.91h8.91v-8.91h26.73v8.91h8.91v-8.91h8.91v-8.9Z"/>
+          <path class="hl" d="M79.19,190.53h-8.73v-17.75c2.79,0,5.54-.01,8.28.03.22,0,.63.38.63.58.01,5.66-.02,11.33-.05,16.99,0,.03-.05.06-.13.16Z"/>
+          <text style="font-family:Montserrat,sans-serif;font-size:16.63px;letter-spacing:.2em;fill:#B8A070;opacity:.85" transform="translate(86.82 236.01)"><tspan x="0" y="0">SANCHAGE</tspan></text>
+          <path class="hl" d="M231.78,43.62h-45.51v4.45h0v8.88h35.64v142.57H61.55V57.14h44.54v-9.07h0v-4.45h-57.91v169.04h187.09V43.62h-3.49Z"/>
+          <path class="hl" d="M123.91,43.62v13.33h44.54v-13.33h-44.54Z"/>
+        </svg>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-k">FOUNDED</div>
+          <div class="hero-stat-v">2016</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-k">ORIGIN</div>
+          <div class="hero-stat-v">福鼎</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-k">SERIES</div>
+          <div class="hero-stat-v">4</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-k">ALTITUDE</div>
+          <div class="hero-stat-v">740m</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══ 02 · BRAND ═══ -->
+<section id="brand">
+  <div class="brand-section">
+    <div class="section-eyebrow">
+      <div class="section-eyebrow-text">
+        <div class="section-eyebrow-diamond"></div>
+        <span data-zh="BRAND STORY · 品牌故事" data-en="BRAND STORY">BRAND STORY · 品牌故事</span>
+      </div>
+    </div>
+    <div class="brand-grid">
+      <div class="brand-item">
+        <div class="brand-num">01 · DAO</div>
+        <div class="brand-title" data-zh="道与三" data-en="Three & The Way">道与三</div>
+        <p class="brand-body" data-zh="三，天地人之数，亦白茶之数。一年鲜，三年陈，七年宝——时间在白茶里有自己的语言。三茶阁，取三之道，守一方好茶。" data-en="Three — the number of heaven, earth and man, and the number of white tea. Fresh at one year, aged at three, treasure at seven. SANCHAGE holds this way.">三，天地人之数，亦白茶之数。一年鲜，三年陈，七年宝——时间在白茶里有自己的语言。三茶阁，取三之道，守一方好茶。</p>
+      </div>
+      <div class="brand-item">
+        <div class="brand-num">02 · TERROIR</div>
+        <div class="brand-title" data-zh="茶与山场" data-en="Tea & Terroir">茶与山场</div>
+        <p class="brand-body" data-zh="磻溪，海拔560米，古树环抱，林木气深。管阳，海拔740米，云海常驻，高山韵清。同一片叶，异境不同味——山场是白茶最诚实的签名。" data-en="Panxi at 560m, forest-wrapped and woody. Guanyang at 740m, cloud-kissed and crisp. The same leaf tells a different story in different mountains.">磻溪，海拔560米，古树环抱，林木气深。管阳，海拔740米，云海常驻，高山韵清。同一片叶，异境不同味——山场是白茶最诚实的签名。</p>
+      </div>
+      <div class="brand-item">
+        <div class="brand-num">03 · PAVILION</div>
+        <div class="brand-title" data-zh="阁与器" data-en="Pavilion & Vessel">阁与器</div>
+        <p class="brand-body" data-zh="阁，藏器之所。三茶阁之名，是一种承诺：每一款茶，都值得被郑重收藏。器为茶服务，不以华丽夺味，不以繁复扰心。" data-en="A pavilion that holds precious things. Each tea from SANCHAGE is worthy of careful keeping. The vessel serves the tea — never overshadowing it.">阁，藏器之所。三茶阁之名，是一种承诺：每一款茶，都值得被郑重收藏。器为茶服务，不以华丽夺味，不以繁复扰心。</p>
+      </div>
+    </div>
+    <div class="brand-quote">
+      <p class="brand-quote-text" data-zh="「 白茶不是喝快的茶，是喝慢的茶。它不催你，它等你。」" data-en="&ldquo; White tea is not a tea to rush. It does not urge you. It waits. &rdquo;">「 白茶不是喝快的茶，是喝慢的茶。它不催你，它等你。」</p>
+      <div class="brand-quote-en">— 周一川 · 主理人 · 三茶阁</div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══ 03 · PRODUCTS ═══ -->
+<section id="products" class="products-section">
+  <div class="products-inner">
+    <div class="products-header">
+      <div>
+        <div class="products-subtitle en">PRODUCTS · 系列</div>
+        <h2 class="products-title" data-zh="四款 · 四山 · 四季" data-en="Four Teas · Four Mountains · Four Seasons">四款 · 四山 · 四季</h2>
+      </div>
+      <a href="products/" class="btn-ghost" data-zh="查看全部" data-en="VIEW ALL" style="margin-bottom:6px">查看全部</a>
+    </div>
+    <div class="products-grid">
+
+      <!-- 静芯 · 白毫银针 -->
+      <div class="product-card">
+        <div class="product-card-img" style="background:#1E2020">
+          <div class="product-card-img-placeholder" style="color:rgba(184,160,112,.25)">芯</div>
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-series en">JINGXIN · 静芯</div>
+          <div class="product-card-name" data-zh="静芯" data-en="Quiet Heart">静芯</div>
+          <div class="product-card-grade en">BAIHAO SILVER NEEDLE</div>
+          <p class="product-card-desc" data-zh="管阳高山，海拔740米。芽身紧实，毫香清冽，高山慢长的心思。" data-en="Guanyang highlands, 740m. Dense buds, crisp aroma, slow-grown mountain character.">管阳高山，海拔740米。芽身紧实，毫香清冽，高山慢长的心思。</p>
+          <a href="products/jingxin.html" class="product-card-link en" data-zh="了解更多" data-en="EXPLORE">了解更多</a>
+        </div>
+      </div>
+
+      <!-- 芳华 · 白牡丹 -->
+      <div class="product-card">
+        <div class="product-card-img" style="background:#F2ECE0">
+          <div class="product-card-img-placeholder" style="color:rgba(171,0,2,.2)">华</div>
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-series en">FANGHUA · 芳华</div>
+          <div class="product-card-name" data-zh="芳华" data-en="Blooming Years">芳华</div>
+          <div class="product-card-grade en">WHITE PEONY</div>
+          <p class="product-card-desc" data-zh="磻溪产区，一芽二叶。花香馥郁，汤色杏黄，是白牡丹最美的年岁。" data-en="Panxi terroir, one bud two leaves. Floral, apricot-gold, the finest years of White Peony.">磻溪产区，一芽二叶。花香馥郁，汤色杏黄，是白牡丹最美的年岁。</p>
+          <a href="products/fanghua.html" class="product-card-link en" data-zh="了解更多" data-en="EXPLORE">了解更多</a>
+        </div>
+      </div>
+
+      <!-- 翠微 · 寿眉 -->
+      <div class="product-card">
+        <div class="product-card-img" style="background:#C6D5BF">
+          <div class="product-card-img-placeholder" style="color:rgba(58,107,74,.3)">微</div>
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-series en">CUIWEI · 翠微</div>
+          <div class="product-card-name" data-zh="翠微" data-en="Jade Mist">翠微</div>
+          <div class="product-card-grade en">SHOUMEI · AGED</div>
+          <p class="product-card-desc" data-zh="管阳秋采，2021年压饼。枣香渐显，陈年化蜜，岁月为证。" data-en="Guanyang autumn harvest, 2021 cake. Emerging date-honey aroma, aged and refined.">管阳秋采，2021年压饼。枣香渐显，陈年化蜜，岁月为证。</p>
+          <a href="products/cuiwei.html" class="product-card-link en" data-zh="了解更多" data-en="EXPLORE">了解更多</a>
+        </div>
+      </div>
+
+      <!-- 荒野 · 荒野白茶 -->
+      <div class="product-card">
+        <div class="product-card-img" style="background:#2A1F0F">
+          <div class="product-card-img-placeholder" style="color:rgba(184,160,112,.2)">野</div>
+        </div>
+        <div class="product-card-body">
+          <div class="product-card-series en">WILD · 荒野</div>
+          <div class="product-card-name" data-zh="荒野" data-en="Wild Growth">荒野</div>
+          <div class="product-card-grade en">WILD WHITE TEA</div>
+          <p class="product-card-desc" data-zh="无人管理的荒野古茶树，自生自灭，野性十足。非人工，非栽培，是时间与山林的赠礼。" data-en="Untended wild ancient trees, ungrafted and ungoverned. Nature's own gift from mountain and time.">无人管理的荒野古茶树，自生自灭，野性十足。非人工，非栽培，是时间与山林的赠礼。</p>
+          <a href="products/wild.html" class="product-card-link en" data-zh="了解更多" data-en="EXPLORE">了解更多</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══ 04 · ORIGIN ═══ -->
+<section id="origin">
+  <div class="origin-section">
+    <div class="section-eyebrow">
+      <div class="section-eyebrow-text">
+        <div class="section-eyebrow-diamond"></div>
+        <span data-zh="TEA ORIGIN · 产区" data-en="TEA ORIGIN">TEA ORIGIN · 产区</span>
+      </div>
+    </div>
+    <div class="origin-grid">
+      <!-- 磻溪 -->
+      <div class="origin-left-panel">
+        <div class="origin-panel-label en">PANXI · 01</div>
+        <div class="origin-panel-name" data-zh="磻溪" data-en="Pan Xi">磻溪</div>
+        <div class="origin-panel-en">PAN XI · FUDING</div>
+        <div class="origin-alt-label">
+          <span class="origin-alt-num">560</span>
+          <span class="origin-alt-unit">m a.s.l.</span>
+        </div>
+        <div class="origin-alt-bar"><div class="origin-alt-fill" style="width:56%"></div></div>
+        <div class="origin-yun" data-zh="林木韵" data-en="Forest Note">林木韵</div>
+        <p class="origin-yun-desc" data-zh="古树环抱，雨雾常驻。茶汤带幽深林木气，回甘绵长。入口醇厚，是磻溪产区最独特的山场印记。" data-en="Ancient trees surround. Mist lingers year-round. The tea carries deep forest notes with lasting sweetness — the unmistakable signature of Panxi.">古树环抱，雨雾常驻。茶汤带幽深林木气，回甘绵长。入口醇厚，是磻溪产区最独特的山场印记。</p>
+        <div class="origin-facts">
+          <div class="origin-fact">
+            <div class="origin-fact-k">CLIMATE</div>
+            <div class="origin-fact-v" data-zh="年均温 18.4°C" data-en="Avg 18.4°C">年均温 18.4°C</div>
+          </div>
+          <div class="origin-fact">
+            <div class="origin-fact-k">FOREST</div>
+            <div class="origin-fact-v" data-zh="覆盖率 89%" data-en="89% Coverage">覆盖率 89%</div>
+          </div>
+          <div class="origin-fact">
+            <div class="origin-fact-k">SOIL</div>
+            <div class="origin-fact-v" data-zh="红壤夹砂砾" data-en="Red sandy loam">红壤夹砂砾</div>
+          </div>
+          <div class="origin-fact">
+            <div class="origin-fact-k">HARVEST</div>
+            <div class="origin-fact-v" data-zh="春秋两季" data-en="Spring & Autumn">春秋两季</div>
+          </div>
+        </div>
+      </div>
+      <!-- 管阳 -->
+      <div class="origin-right-panel">
+        <div class="origin-panel-label en">GUANYANG · 02</div>
+        <div class="origin-panel-name" data-zh="管阳" data-en="Guan Yang">管阳</div>
+        <div class="origin-panel-en">GUAN YANG · FUDING</div>
+        <div class="origin-alt-label">
+          <span class="origin-alt-num">740</span>
+          <span class="origin-alt-unit">m a.s.l.</span>
+        </div>
+        <div class="origin-alt-bar"><div class="origin-alt-fill" style="width:74%"></div></div>
+        <div class="origin-yun" data-zh="高山韵" data-en="Alpine Note">高山韵</div>
+        <p class="origin-yun-desc" data-zh="云海之上，昼夜温差大。滋味清冽，花香高扬，喉韵凉甜。是三茶阁静芯系列的主产区。" data-en="Above the sea of clouds. Large diurnal temperature swings. Crisp taste, high floral notes, cool sweet finish — the home of Jingxin Silver Needle.">云海之上，昼夜温差大。滋味清冽，花香高扬，喉韵凉甜。是三茶阁静芯系列的主产区。</p>
+        <div class="origin-facts">
+          <div class="origin-fact">
+            <div class="origin-fact-k">CLIMATE</div>
+            <div class="origin-fact-v" data-zh="年均温 16.1°C" data-en="Avg 16.1°C">年均温 16.1°C</div>
+          </div>
+          <div class="origin-fact">
+            <div class="origin-fact-k">FOG DAYS</div>
+            <div class="origin-fact-v" data-zh="年均 200+ 天" data-en="200+ days/yr">年均 200+ 天</div>
+          </div>
+          <div class="origin-fact">
+            <div class="origin-fact-k">SOIL</div>
+            <div class="origin-fact-v" data-zh="黄壤富含矿物" data-en="Mineral-rich loam">黄壤富含矿物</div>
+          </div>
+          <div class="origin-fact">
+            <div class="origin-fact-k">ALTITUDE</div>
+            <div class="origin-fact-v">740 m</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══ 05 · STORY ═══ -->
+<section id="story" class="story-section">
+  <div class="story-inner">
+    <div class="section-eyebrow" style="border-color:rgba(184,160,112,.2)">
+      <div class="section-eyebrow-text" style="color:var(--gold)">
+        <div class="section-eyebrow-diamond" style="background:var(--gold)"></div>
+        <span data-zh="TIME VALUE · 时间价值" data-en="TIME VALUE">TIME VALUE · 时间价值</span>
+      </div>
+    </div>
+    <div class="story-headline" data-zh="白茶，是时间的作品。" data-en="White Tea Is Time's Work.">白茶，是时间的作品。</div>
+    <div class="story-headline-en">WHITE TEA IS TIME'S WORK</div>
+    <div class="story-grid">
+      <div class="story-item">
+        <div class="story-item-num">01 · YEAR</div>
+        <div class="story-item-dot"></div>
+        <div class="story-year">
+          <span class="story-year-cn">一年</span>
+          <span class="story-year-char">鲜</span>
+        </div>
+        <p class="story-desc" data-zh="清鲜甘冽，毫香显。此时的白茶，是山林早晨最清醒的那一刻——清透，直白，无遮掩。" data-en="Fresh and crisp. The aroma of silver buds is most vivid now — the tea at its most transparent and honest.">清鲜甘冽，毫香显。此时的白茶，是山林早晨最清醒的那一刻——清透，直白，无遮掩。</p>
+      </div>
+      <div class="story-item">
+        <div class="story-item-num">03 · YEARS</div>
+        <div class="story-item-dot"></div>
+        <div class="story-year">
+          <span class="story-year-cn">三年</span>
+          <span class="story-year-char">陈</span>
+        </div>
+        <p class="story-desc" data-zh="转陈出蜜，温和润喉。青涩褪去，蜜意渐显，汤色转为琥珀。时间第一次在茶里留下印记。" data-en="Aged notes emerge, honey begins to form. The briskness softens, amber tones deepen. Time leaves its first mark.">转陈出蜜，温和润喉。青涩褪去，蜜意渐显，汤色转为琥珀。时间第一次在茶里留下印记。</p>
+      </div>
+      <div class="story-item">
+        <div class="story-item-num">07 · YEARS</div>
+        <div class="story-item-dot"></div>
+        <div class="story-year">
+          <span class="story-year-cn">七年</span>
+          <span class="story-year-char">宝</span>
+        </div>
+        <p class="story-desc" data-zh="枣香药香并起，醇厚绵长。七年以上的老白茶，已不只是饮品，更是可以收藏的时间标本。" data-en="Date and medicinal notes arise together. Deep and long-lasting. A tea aged past seven years is no longer just a drink — it is a specimen of time.">枣香药香并起，醇厚绵长。七年以上的老白茶，已不只是饮品，更是可以收藏的时间标本。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══ 06 · CHANNEL ═══ -->
+<section id="channel">
+  <div class="channel-section">
+    <div class="section-eyebrow">
+      <div class="section-eyebrow-text">
+        <div class="section-eyebrow-diamond"></div>
+        <span data-zh="CHANNELS · 购买渠道" data-en="WHERE TO BUY">CHANNELS · 购买渠道</span>
+      </div>
+    </div>
+    <div class="channel-grid">
+      <div class="channel-card">
+        <div class="channel-card-label en">WECHAT SHOP · 官方渠道</div>
+        <div class="channel-card-name" data-zh="微信小店" data-en="WeChat Shop">微信小店</div>
+        <p class="channel-card-desc" data-zh="三茶阁官方微信小店，正品保证，顺丰发货。支持微信支付，普通浏览器和微信内均可下单。" data-en="Official SANCHAGE WeChat shop. Authentic products, SF Express delivery. Open in any browser or WeChat.">三茶阁官方微信小店，正品保证，顺丰发货。支持微信支付，普通浏览器和微信内均可下单。</p>
+        <a href="https://store.weixin.qq.com/shop/b/CmrLejp2VwtbE3c?entrance_id=h5"
+           target="_blank" rel="noopener" class="btn-buy btn-wechat" data-zh="微信小店购买" data-en="WECHAT SHOP">微信小店购买</a>
+        <p class="channel-note">在普通浏览器或微信中均可打开 · 支持微信支付</p>
+      </div>
+      <div class="channel-card">
+        <div class="channel-card-label en">XIAOHONGSHU · 小红书</div>
+        <div class="channel-card-name" data-zh="小红书小店" data-en="Xiaohongshu Shop">小红书小店</div>
+        <p class="channel-card-desc" data-zh="三茶阁小红书官方号同步上架，探店笔记 + 购买直达。欢迎关注，互动有福利。" data-en="Follow SANCHAGE on Xiaohongshu for tea notes, reviews, and direct purchase. Community perks for followers.">三茶阁小红书官方号同步上架，探店笔记 + 购买直达。欢迎关注，互动有福利。</p>
+        <a href="#" class="btn-xhs" data-zh="小红书购买（即将上线）" data-en="XIAOHONGSHU（COMING SOON）">小红书购买（即将上线）</a>
+        <p class="channel-note">链接即将上线 · 可先关注小红书号「三茶阁SANCHAGE」</p>
+      </div>
+    </div>
+    <div style="margin-top:40px;padding:28px 32px;background:rgba(58,107,74,.06);border:1px solid rgba(58,107,74,.2);display:flex;align-items:center;gap:24px">
+      <div>
+        <div style="font-family:Montserrat,sans-serif;font-size:8px;letter-spacing:.22em;color:var(--gold);margin-bottom:4px">CONTACT</div>
+        <div style="font-size:14px;letter-spacing:.06em" data-zh="咨询与定制" data-en="Inquiry & Custom">咨询与定制</div>
+      </div>
+      <div style="width:1px;height:40px;background:var(--border)"></div>
+      <div style="font-size:13px;color:var(--muted)">
+        <span data-zh="邮件：" data-en="Email: ">邮件：</span><a href="mailto:3@whiea.cn" style="color:var(--ink);text-decoration:none">3@whiea.cn</a>
+        &nbsp;·&nbsp;
+        <span data-zh="微信：添加后备注「三茶阁」" data-en="WeChat: Add and note SANCHAGE">微信：添加后备注「三茶阁」</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══ FOOTER ═══ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">三茶阁</div>
+        <span class="footer-brand-en">SANCHAGE</span>
+        <p class="footer-brand-tagline" data-zh="白茶有三，阁藏臻品。<br>小众精品福鼎白茶，小而美，每款都有来历。" data-en="White tea has three kinds, the pavilion holds the finest. Small-batch Fuding white tea, each with a story.">白茶有三，阁藏臻品。<br>小众精品福鼎白茶，小而美，每款都有来历。</p>
+      </div>
+      <div>
+        <div class="footer-nav-heading">EXPLORE</div>
+        <ul class="footer-nav-links">
+          <li><a href="#brand" data-zh="品牌故事" data-en="Brand Story">品牌故事</a></li>
+          <li><a href="products/" data-zh="产品系列" data-en="Products">产品系列</a></li>
+          <li><a href="#origin" data-zh="产区介绍" data-en="Origin">产区介绍</a></li>
+          <li><a href="#channel" data-zh="购买渠道" data-en="Buy">购买渠道</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-nav-heading">CONTACT</div>
+        <div class="footer-contact-item">
+          <a href="mailto:3@whiea.cn">3@whiea.cn</a>
+        </div>
+        <div class="footer-contact-item" data-zh="微信备注「三茶阁」" data-en="WeChat: note SANCHAGE">微信备注「三茶阁」</div>
+        <div class="footer-contact-item">sanchage.com</div>
+        <div style="margin-top:16px">
+          <a href="https://store.weixin.qq.com/shop/b/CmrLejp2VwtbE3c?entrance_id=h5"
+             target="_blank" rel="noopener"
+             style="font-family:Montserrat,sans-serif;font-size:9px;letter-spacing:.15em;color:var(--gold);text-decoration:none">
+            WECHAT SHOP →
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2024 三茶阁 SANCHAGE · All Rights Reserved</div>
+      <div class="footer-icp">sanchage.com · FUJIAN FUDING</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ═══ BILINGUAL ═══ */
+const lang = localStorage.getItem('lang') || 'zh';
+setLang(lang);
+
+function setLang(l) {
+  document.querySelectorAll('[data-zh]').forEach(el => {
+    el.innerHTML = el.dataset[l] || el.dataset.zh;
+  });
+  document.querySelectorAll('.lang-toggle').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent.trim() === (l === 'zh' ? '中' : 'EN'));
+  });
+  localStorage.setItem('lang', l);
+}
+
+/* ═══ SMOOTH SCROLL ═══ */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const id = a.getAttribute('href').slice(1);
+    const el = document.getElementById(id);
+    if (el) { e.preventDefault(); el.scrollIntoView({ behavior: 'smooth' }); }
+  });
+});
+</script>
+</body>
+</html>

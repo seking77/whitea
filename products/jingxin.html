@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="三茶阁 · 静芯 · 白毫银针 · 管阳高山 · 740m">
+<title>三茶阁 · 静芯 · 白毫银针</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@300;400;500;700&family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --red:#AB0002; --green:#3A6B4A; --brown:#8B4513;
+  --jade:#C6D5BF; --paper:#F2ECE0; --ink:#1E2020;
+  --gold:#B8A070; --wild:#2A1F0F;
+  --white:#FFFFFF; --border:#D8CFBE; --muted:#6A5F50;
+  --soft:#F8F6F0;
+  --series-bg:#1E2020; --series-text:#F2ECE0; --series-acc:#B8A070;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--paper);color:var(--ink);font-family:'Noto Serif SC',serif;font-size:14px;line-height:1.8;-webkit-font-smoothing:antialiased}
+::selection{background:var(--red);color:var(--white)}
+.en{font-family:'Montserrat',sans-serif;text-transform:uppercase;letter-spacing:.2em}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");background-size:180px;opacity:.5}
+
+/* HEADER */
+.site-header{position:sticky;top:0;z-index:200;background:var(--ink);border-bottom:2px solid var(--red);height:56px;display:flex;align-items:center;justify-content:space-between;padding:0 44px;box-shadow:0 2px 12px rgba(0,0,0,.18)}
+.header-brand{display:flex;align-items:center;gap:14px;text-decoration:none}
+.header-seal{width:34px;height:34px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.header-name{color:var(--white);font-weight:700;font-size:16px;letter-spacing:.12em}
+.header-name span{font-family:'Montserrat',sans-serif;font-weight:300;font-size:10px;color:var(--gold);margin-left:10px;letter-spacing:.22em}
+.header-nav{display:flex;gap:4px;align-items:center}
+.header-nav a{font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:.14em;color:var(--gold);text-decoration:none;padding:5px 10px;border:.5px solid rgba(184,160,112,.3);border-radius:2px;transition:all .2s}
+.header-nav a:hover{background:rgba(184,160,112,.12);color:var(--white)}
+.lang-toggle{font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:.14em;color:var(--muted);background:transparent;border:.5px solid rgba(184,160,112,.2);padding:4px 8px;cursor:pointer;transition:all .2s;border-radius:2px}
+.lang-toggle.active{color:var(--gold);border-color:rgba(184,160,112,.5)}
+
+/* PAGE */
+.page{max-width:1200px;margin:0 auto;padding:0 44px 120px;position:relative;z-index:1}
+
+/* PART LABEL */
+.part-label{display:flex;align-items:center;gap:16px;margin-bottom:40px;padding-bottom:14px;border-bottom:1px solid var(--border)}
+.part-num{font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:.22em;color:var(--muted);border:.5px solid var(--border);padding:4px 10px}
+.part-en{font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:.22em;color:var(--muted);margin-left:auto}
+
+/* HERO */
+.hero{padding:80px 0 72px;border-bottom:1px solid var(--border);display:grid;grid-template-columns:1fr 1fr;gap:0}
+.hero-left{padding-right:64px}
+.hero-eyebrow{font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:.3em;color:var(--gold);margin-bottom:28px;display:flex;align-items:center;gap:12px}
+.hero-eyebrow::before{content:'';width:28px;height:1px;background:var(--red)}
+.hero-series{font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:.25em;color:var(--green);text-transform:uppercase;margin-bottom:12px}
+.hero-title{font-size:clamp(48px,6vw,72px);font-weight:700;color:var(--ink);letter-spacing:.06em;line-height:1.1;margin-bottom:8px}
+.hero-subtitle{font-size:18px;font-weight:400;color:var(--green);letter-spacing:.14em;margin-bottom:28px}
+.hero-tagline{font-size:15px;color:var(--muted);line-height:2.1;max-width:480px;border-left:3px solid var(--red);padding-left:20px}
+.hero-meta{margin-top:36px;display:flex;gap:0;border-top:1px solid var(--border)}
+.hero-meta-item{flex:1;padding:16px 20px;border-right:1px solid var(--border)}
+.hero-meta-item:last-child{border-right:none}
+.hero-meta-k{font-family:'Montserrat',sans-serif;font-size:8px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase;margin-bottom:5px}
+.hero-meta-v{font-size:14px;font-weight:500;color:var(--ink)}
+.hero-right{position:relative}
+.hero-img-zone{width:100%;min-height:480px;background:var(--series-bg);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative}
+.hero-img-zone-text{font-size:80px;font-weight:700;color:rgba(184,160,112,.2);letter-spacing:.1em;font-family:'Noto Serif SC',serif}
+.hero-corner-tag{position:absolute;top:16px;right:16px;z-index:2;background:rgba(255,255,255,.1);border:.5px solid rgba(184,160,112,.3);padding:6px 12px;font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:.15em;color:var(--gold)}
+
+/* ORIGIN */
+.origin-section{margin-top:88px}
+.origin-grid{display:grid;grid-template-columns:3fr 6fr 3fr;gap:0;margin-top:0}
+.origin-left{padding-right:40px}
+.origin-title{font-size:52px;font-weight:700;letter-spacing:.06em;line-height:1.1;color:var(--ink);margin-bottom:12px;writing-mode:vertical-rl}
+.origin-intro{font-size:13px;color:var(--muted);line-height:1.9;margin-bottom:32px}
+.origin-btn{width:100%;text-align:left;padding:16px 18px;border:1px solid var(--border);background:transparent;cursor:pointer;margin-bottom:8px;transition:all .2s;display:flex;flex-direction:column;gap:6px}
+.origin-btn.active{border-color:var(--green);background:var(--white)}
+.origin-btn-top{display:flex;align-items:baseline;justify-content:space-between}
+.origin-btn-cn{font-size:22px;font-weight:700;letter-spacing:.12em;color:var(--ink)}
+.origin-btn.active .origin-btn-cn{color:var(--green)}
+.origin-btn-en{font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:.15em;color:var(--muted)}
+.origin-btn-alt{font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:.12em;color:var(--muted)}
+.origin-mid{padding:0 32px;border-left:1px solid var(--border);border-right:1px solid var(--border)}
+.mountain-wrap{position:relative;aspect-ratio:4/3;background:var(--soft);border:1px solid var(--border);overflow:hidden}
+.alt-ruler{position:absolute;left:0;top:0;bottom:0;width:52px;border-right:1px solid var(--border);background:rgba(248,246,240,.8);display:flex;flex-direction:column;justify-content:space-between;padding:16px 0;z-index:3}
+.alt-tick{display:flex;align-items:center;gap:4px;padding-left:8px}
+.alt-tick span:first-child{width:8px;height:1px;background:var(--muted);opacity:.4;flex-shrink:0}
+.alt-tick span:last-child{font-family:'Montserrat',sans-serif;font-size:8px;letter-spacing:.08em;color:var(--muted)}
+.alt-line{position:absolute;left:52px;right:0;border-top:1px dashed rgba(58,107,74,.6);transition:top 1s cubic-bezier(.22,1,.36,1);z-index:3}
+.alt-label{position:absolute;right:12px;top:-26px;background:rgba(255,255,255,.88);border:.5px solid var(--border);padding:3px 8px;display:flex;align-items:baseline;gap:5px}
+.alt-label-num{font-size:18px;font-weight:500;color:var(--green)}
+.alt-label-unit{font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:.1em;color:var(--muted)}
+.mountain-svg-wrap{position:absolute;left:52px;right:0;bottom:0;top:0}
+.mountain-svg-wrap svg{width:100%;height:100%}
+.climate-strip{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:0;border-left:1px solid var(--border);border-right:1px solid var(--border);border-bottom:1px solid var(--border)}
+.climate-item{padding:14px 18px;border-right:1px solid var(--border)}
+.climate-item:last-child{border-right:none}
+.climate-k{font-family:'Montserrat',sans-serif;font-size:8px;letter-spacing:.2em;color:var(--gold);margin-bottom:5px}
+.climate-v{font-size:13px;color:var(--ink)}
+.origin-right{padding-left:40px}
+.origin-yun{font-size:28px;font-weight:700;color:var(--green);letter-spacing:.1em;margin-bottom:8px}
+.origin-yun-desc{font-size:13px;color:var(--muted);line-height:1.9}
+
+/* TASTING */
+.tasting-section{margin-top:88px}
+.tasting-grid{display:grid;grid-template-columns:3fr 5fr 4fr;gap:0}
+.tasting-left{padding-right:32px}
+.tasting-title{font-size:52px;font-weight:700;letter-spacing:.06em;line-height:1.1;writing-mode:vertical-rl;margin-bottom:12px}
+.tasting-intro{font-size:13px;color:var(--muted);line-height:1.9;margin-bottom:28px}
+.steps-list{border-top:1px solid var(--border)}
+.step-item{border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:14px 0;cursor:pointer;transition:color .2s;color:var(--muted)}
+.step-item.active{color:var(--green)}
+.step-left{display:flex;align-items:center;gap:16px}
+.step-idx{font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:.2em;color:var(--border)}
+.step-item.active .step-idx{color:var(--green)}
+.step-cn{font-size:17px;letter-spacing:.12em}
+.step-diamond{width:6px;height:6px;background:var(--green);transform:rotate(45deg);flex-shrink:0;opacity:0;transition:opacity .2s}
+.step-item.active .step-diamond{opacity:1}
+.tasting-mid{border-left:1px solid var(--border);border-right:1px solid var(--border);padding:0 32px}
+.step-upload{aspect-ratio:4/5;background:var(--soft);border:1px solid var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.step-corner-tag{position:absolute;top:12px;left:12px;z-index:2;background:rgba(255,255,255,.9);border:.5px solid var(--border);padding:5px 10px;font-family:'Montserrat',sans-serif;font-size:8px;letter-spacing:.15em;color:var(--muted)}
+.step-progress{display:grid;grid-template-columns:repeat(6,1fr);gap:4px;margin-top:12px}
+.step-progress-bar{height:2px;background:var(--border);cursor:pointer;transition:background .2s}
+.step-progress-bar.done{background:var(--green)}
+.step-nav{display:flex;gap:8px;margin-top:10px;justify-content:flex-end}
+.step-nav-btn{width:36px;height:36px;border:1px solid var(--border);background:var(--white);cursor:pointer;font-size:16px;color:var(--ink);display:flex;align-items:center;justify-content:center;transition:all .2s}
+.step-nav-btn.next{border-color:var(--green);background:var(--green);color:var(--white)}
+.step-nav-btn.next:hover{background:var(--ink);border-color:var(--ink)}
+.tasting-right{padding-left:40px}
+.step-en{font-family:'Montserrat',sans-serif;font-size:10px;letter-spacing:.25em;color:var(--muted);margin-bottom:10px}
+.step-title{font-size:26px;font-weight:700;letter-spacing:.04em;line-height:1.5;color:var(--ink);margin-bottom:16px}
+.step-body{font-size:14px;color:var(--muted);line-height:2.1}
+.step-specs{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:24px;border-top:1px solid var(--border);padding-top:20px}
+.spec-item{padding:8px 0;border-bottom:1px solid var(--border)}
+.spec-item:nth-last-child(-n+2){border-bottom:none}
+.spec-k{font-family:'Montserrat',sans-serif;font-size:8px;letter-spacing:.2em;color:var(--gold);margin-bottom:3px}
+.spec-v{font-size:15px;color:var(--ink)}
+.quote-box{margin-top:28px;position:relative;background:rgba(248,246,240,.7);border:1px solid var(--border);padding:22px 22px 18px 26px}
+.quote-side{position:absolute;left:0;top:18px;bottom:18px;width:2px;background:var(--green)}
+.quote-mark{position:absolute;left:18px;top:-12px;background:var(--paper);padding:0 6px;font-size:22px;color:var(--green);line-height:1}
+.quote-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.quote-diamond{width:6px;height:6px;background:var(--green);transform:rotate(45deg);flex-shrink:0}
+.quote-cn{font-size:13px;letter-spacing:.3em;color:var(--ink)}
+.quote-en{font-family:'Montserrat',sans-serif;font-size:8px;letter-spacing:.2em;color:var(--muted)}
+.quote-text{font-size:15px;line-height:2.1;color:var(--ink);letter-spacing:.02em}
+.quote-author{margin-top:16px;padding-top:14px;border-top:1px solid var(--border);display:flex;align-items:center;gap:12px}
+.quote-avatar{width:36px;height:36px;background:rgba(58,107,74,.9);display:flex;align-items:center;justify-content:center;color:var(--white);font-size:13px;flex-shrink:0;transform:rotate(-3deg)}
+.quote-author-name{font-size:13px;letter-spacing:.1em;color:var(--ink)}
+.quote-author-role{font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:.14em;color:var(--muted);margin-top:2px}
+
+/* RADAR */
+.radar-section{margin-top:56px;padding-top:48px;border-top:1px solid var(--border)}
+.radar-eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:36px}
+.radar-eyebrow::before,.radar-eyebrow::after{content:'';flex:1;height:1px;background:var(--border)}
+.radar-eyebrow-text{font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:.3em;color:var(--muted);display:flex;align-items:center;gap:8px}
+.radar-grid{display:grid;grid-template-columns:4fr 5fr 3fr;gap:0;align-items:center}
+.radar-left{padding-right:40px}
+.radar-headline{font-size:22px;font-weight:700;line-height:1.6;color:var(--ink)}
+.radar-body{font-size:13px;color:var(--muted);line-height:1.9;margin-top:16px}
+.radar-legends{margin-top:28px;display:flex;flex-direction:column;gap:12px}
+.legend-row{display:flex;align-items:center;gap:10px}
+.legend-line{width:28px;height:2px;flex-shrink:0}
+.legend-name{font-size:13px;color:var(--ink)}
+.legend-alt{font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:.15em;color:var(--muted);margin-left:auto}
+.radar-mid{display:flex;justify-content:center;border-left:1px solid var(--border);border-right:1px solid var(--border);padding:24px 0}
+.radar-right{padding-left:40px}
+.flavor-notes{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:36px;border-top:1px solid var(--border)}
+.flavor-note{padding:20px 20px 20px 0;border-right:1px solid var(--border)}
+.flavor-note:nth-child(4n){border-right:none}
+.flavor-note:nth-child(n+5){border-top:1px solid var(--border)}
+.flavor-note:last-child{border-right:none;background:linear-gradient(135deg,var(--soft) 0%,var(--paper) 100%);border-left:3px solid var(--red);padding-left:17px}
+.flavor-idx{font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:.2em;color:var(--green);margin-bottom:6px}
+.flavor-axis-name{font-size:17px;font-weight:500;letter-spacing:.16em;color:var(--ink);margin-bottom:6px}
+.flavor-score-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.flavor-bar-wrap{flex:1;height:2px;background:var(--border)}
+.flavor-bar{height:100%;background:var(--red);transition:width .6s cubic-bezier(.22,1,.36,1)}
+.flavor-pct{font-family:'Montserrat',sans-serif;font-size:9px;letter-spacing:.08em;color:var(--muted);width:30px;text-align:right}
+.flavor-desc{font-size:12px;color:var(--muted);line-height:1.8}
+
+/* PAVILION */
+.pavilion-section{margin-top:88px}
+.pavilion-grid{display:grid;grid-template-columns:5fr 7fr;gap:0}
+.pavilion-left{padding-right:52px}
+.pavilion-img-zone{aspect-ratio:1;background:var(--series-bg);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.pavilion-img-text{font-size:60px;font-weight:700;color:rgba(184,160,112,.2);letter-spacing:.1em}
+.pavilion-seal{position:absolute;bottom:14px;left:14px;z-index:2;width:40px;height:40px;background:var(--red);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;color:var(--white);letter-spacing:.05em;transform:rotate(-3deg)}
+.pavilion-right{}
+.pavilion-title{font-size:36px;font-weight:700;letter-spacing:.05em;line-height:1.3}
+.pavilion-body{font-size:14px;color:var(--muted);line-height:2.1;margin-top:14px;max-width:520px}
+.time-axis{margin-top:36px;position:relative}
+.time-axis-line{position:absolute;left:0;right:0;top:9px;height:1px;background:var(--border)}
+.time-nodes{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;position:relative}
+.time-node-dot{width:10px;height:10px;background:var(--green);transform:rotate(45deg);margin-bottom:20px;position:relative;z-index:1}
+.time-year{display:flex;align-items:baseline;gap:8px}
+.time-year-cn{font-size:26px;font-weight:700;color:var(--green);letter-spacing:.1em}
+.time-role{font-size:20px;font-weight:400;color:var(--ink)}
+.time-desc{font-size:13px;color:var(--muted);line-height:1.9;margin-top:8px}
+.uses-header{display:flex;align-items:baseline;justify-content:space-between;margin-top:40px;padding-top:28px;border-top:1px solid var(--border);margin-bottom:16px}
+.uses-k{font-family:'Montserrat',sans-serif;font-size:8px;letter-spacing:.2em;color:var(--gold)}
+.uses-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.use-card{border:1px solid var(--border);background:var(--white);overflow:hidden;margin-right:-1px}
+.use-card:last-child{margin-right:0}
+.use-img{aspect-ratio:3/4;background:var(--soft);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.use-info{padding:14px}
+.use-cn{font-size:18px;font-weight:500;letter-spacing:.15em}
+.use-en-tag{font-family:'Montserrat',sans-serif;font-size:8px;letter-spacing:.15em;color:var(--muted)}
+.use-note{font-size:12px;color:var(--muted);line-height:1.8;margin-top:6px}
+.use-label{display:flex;align-items:baseline;justify-content:space-between}
+
+/* BUY SECTION */
+.buy-section{margin-top:56px;padding:40px;background:var(--series-bg);border:1px solid rgba(184,160,112,.2);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px}
+.buy-title{font-size:22px;font-weight:700;color:var(--white);letter-spacing:.08em}
+.buy-sub{font-size:13px;color:var(--gold);margin-top:6px;opacity:.8}
+.btn-buy{display:inline-flex;align-items:center;gap:12px;padding:14px 32px;font-family:'Noto Serif SC',serif;font-size:14px;letter-spacing:.1em;text-decoration:none;transition:all .3s}
+.btn-wechat{background:var(--green);color:var(--white)}
+.btn-wechat:hover{background:#2A4F37}
+.btn-xhs{background:transparent;color:var(--gold);border:1px solid rgba(184,160,112,.4)}
+.btn-xhs:hover{background:rgba(184,160,112,.1);color:var(--white)}
+
+/* FOOTER */
+.site-footer{background:var(--ink);color:var(--gold);padding:40px 44px;text-align:center;font-size:12px;line-height:2;border-top:2px solid var(--red);margin-top:0;position:relative;z-index:1}
+.site-footer strong{color:var(--white);font-size:16px;display:block;margin-bottom:4px}
+
+/* DIVIDER */
+.section-divider{height:1px;margin:0;background:linear-gradient(90deg,transparent,var(--gold) 30%,var(--gold) 70%,transparent);opacity:.3;position:relative;z-index:1}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  .hero,.origin-grid,.tasting-grid,.pavilion-grid{grid-template-columns:1fr}
+  .radar-grid,.flavor-notes{grid-template-columns:1fr}
+  .hero-right{min-height:320px}
+  .page{padding:0 20px 80px}
+  .site-header{padding:0 20px}
+  .header-nav a{display:none}
+  .origin-left,.origin-mid,.origin-right{padding:0}
+  .origin-title,.tasting-title{writing-mode:horizontal-tb;font-size:36px}
+  .tasting-right,.tasting-left{padding:0}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a href="../" class="header-brand">
+    <div class="header-seal">
+      <svg viewBox="0 0 283.46 283.46" width="34" height="34" xmlns="http://www.w3.org/2000/svg">
+        <style>.hs{fill:#F2ECE0}</style>
+        <path class="hs" d="M54.51,231.67v-1.92h22.98v1.92h-22.98Z"/>
+        <path class="hs" d="M205.96,231.55v-1.92h22.98v1.92h-22.98Z"/>
+        <path class="hs" d="M150.64,190.58h-8.91v-124.7h8.91v124.7Z"/>
+        <path class="hs" d="M132.82,83.7v8.91h-62.36v-8.91h62.36Z"/>
+        <path class="hs" d="M132.82,65.89v8.91h-62.36v-8.91h62.36Z"/>
+        <path class="hs" d="M132.82,110.41h-62.36v-8.91h62.36v8.91Z"/>
+        <path class="hs" d="M123.91,190.53v-17.76h8.91v17.76h-8.91Z"/>
+        <path class="hs" d="M207.3,110.44v-.02h-3.21v-35.62h-26.73v-8.91h-8.91v26.39h8.91v-8.57h17.82v26.71h-26.73v.02h-8.91v17.81h8.91v-10.04h35.57v10.04h9.04v-17.81h-5.76Z"/>
+        <path class="hs" d="M168.46,137.15v53.38h35.64v-53.38h-35.64ZM195.18,181.66h-17.82v-35.59h17.82v35.59Z"/>
+        <path class="hs" d="M97.18,172.82h8.91v17.75h-8.91v-17.75Z"/>
+        <path class="hs" d="M106.07,154.95v-8.88h-8.85v8.88h-26.75v8.91h62.36v-8.91h-26.75Z"/>
+        <path class="hs" d="M132.82,128.22h-8.91v-8.88h-8.91v8.88h-26.73v-8.88h-8.91v8.88h-8.91v8.9h8.91v8.91h8.91v-8.91h26.73v8.91h8.91v-8.91h8.91v-8.9Z"/>
+        <path class="hs" d="M79.19,190.53h-8.73v-17.75c2.79,0,5.54-.01,8.28.03.22,0,.63.38.63.58.01,5.66-.02,11.33-.05,16.99,0,.03-.05.06-.13.16Z"/>
+        <text style="font-family:Montserrat,sans-serif;font-size:16.63px;letter-spacing:.2em;fill:#F2ECE0" transform="translate(86.82 236.01)"><tspan x="0" y="0">SANCHAGE</tspan></text>
+        <path class="hs" d="M231.78,43.62h-45.51v4.45h0v8.88h35.64v142.57H61.55V57.14h44.54v-9.07h0v-4.45h-57.91v169.04h187.09V43.62h-3.49Z"/>
+        <path class="hs" d="M123.91,43.62v13.33h44.54v-13.33h-44.54Z"/>
+      </svg>
+    </div>
+    <div class="header-name">三茶阁 <span>SANCHAGE</span></div>
+  </a>
+  <nav class="header-nav">
+    <a href="../#brand">品牌</a>
+    <a href="../products/">产品</a>
+    <a href="../#origin">产地</a>
+    <a href="../#channel">购买</a>
+    <button class="lang-toggle active" onclick="setLang('zh')">中</button>
+    <button class="lang-toggle" onclick="setLang('en')">EN</button>
+  </nav>
+</header>
+
+<!-- PART 00 · HERO -->
+<div id="hero" class="page">
+  <div class="hero" style="padding-top:72px">
+    <div class="hero-left">
+      <div class="hero-eyebrow">FUJIAN · FUDING · GUANYANG · 2023</div>
+      <div class="hero-series">JINGXIN · SILVER NEEDLE · 高山收藏</div>
+      <h1 class="hero-title" data-zh="静芯" data-en="Quiet Heart">静芯</h1>
+      <div class="hero-subtitle" data-zh="白毫银针 / 高山银针" data-en="Baihao Silver Needle">白毫银针 / 高山银针</div>
+      <p class="hero-tagline" data-zh="管阳云上，芽守静芯。<br>高山慢长，毫香清冽，<br>是白茶里最克制、最纯粹的那一款。" data-en="Above the clouds of Guanyang, the bud holds its quiet heart. Slow-grown at altitude, crisp aroma — the most restrained, most pure of all white teas.">管阳云上，芽守静芯。<br>高山慢长，毫香清冽，<br>是白茶里最克制、最纯粹的那一款。</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <div class="hero-meta-k">ORIGIN</div>
+          <div class="hero-meta-v">管阳 · 740m</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-k">VINTAGE</div>
+          <div class="hero-meta-v">2023 春</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-k">GRADE</div>
+          <div class="hero-meta-v" data-zh="白毫银针" data-en="Silver Needle">白毫银针</div>
+        </div>
+        <div class="hero-meta-item">
+          <div class="hero-meta-k">FORMAT</div>
+          <div class="hero-meta-v">50g · 罐装</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-img-zone">
+        <div class="hero-img-zone-text">芯</div>
+        <div class="hero-corner-tag">SANCHAGE · JINGXIN</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- PART 01 · 茶源 -->
+<div id="origin" class="page">
+  <div class="origin-section">
+    <div class="part-label">
+      <span class="part-num">PART · 01</span>
+      <span style="font-size:13px;color:var(--muted);letter-spacing:.1em" data-zh="茶源" data-en="ORIGIN">茶源</span>
+      <span class="part-en">TEA ORIGIN</span>
+    </div>
+    <div class="origin-grid">
+      <div class="origin-left">
+        <div style="display:flex;gap:16px;align-items:flex-start;margin-bottom:20px">
+          <div class="origin-title" data-zh="茶源" data-en="Origin">茶<br>源</div>
+          <p class="origin-intro" style="margin-top:8px" data-zh="同一片叶，异境不同味。<br>海拔每升百米，滋味各书一卷。" data-en="The same leaf tells different stories. Every hundred meters of altitude writes a different chapter.">同一片叶，异境不同味。<br>海拔每升百米，滋味各书一卷。</p>
+        </div>
+        <button class="origin-btn" onclick="switchOrigin('panxi')">
+          <div class="origin-btn-top">
+            <span class="origin-btn-cn">磻溪</span><span class="origin-btn-en">PAN XI</span>
+          </div>
+          <div class="origin-btn-alt">ALT 560m</div>
+        </button>
+        <button class="origin-btn active" onclick="switchOrigin('guanyang')">
+          <div class="origin-btn-top">
+            <span class="origin-btn-cn">管阳</span><span class="origin-btn-en">GUAN YANG</span>
+          </div>
+          <div class="origin-btn-alt">ALT 740m</div>
+        </button>
+      </div>
+      <div class="origin-mid">
+        <div class="mountain-wrap" id="mountain-wrap">
+          <div class="alt-ruler">
+            <div class="alt-tick"><span></span><span>1000m</span></div>
+            <div class="alt-tick"><span></span><span>800m</span></div>
+            <div class="alt-tick"><span></span><span>600m</span></div>
+            <div class="alt-tick"><span></span><span>400m</span></div>
+            <div class="alt-tick"><span></span><span>200m</span></div>
+            <div class="alt-tick"><span></span><span>0m</span></div>
+          </div>
+          <div class="alt-line" id="alt-line" style="top:17%">
+            <div class="alt-label">
+              <span class="alt-label-num" id="alt-num">740</span>
+              <span class="alt-label-unit">m</span>
+            </div>
+          </div>
+          <div class="mountain-svg-wrap" id="mountain-svg-wrap">
+            <svg viewBox="0 0 748 300" preserveAspectRatio="none" id="mountain-svg">
+              <defs><linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#F3F1EA"/><stop offset="100%" stop-color="#F9F8F4"/></linearGradient></defs>
+              <rect width="748" height="300" fill="url(#sky)"/>
+              <circle cx="680" cy="52" r="32" fill="none" stroke="#C9B79E" stroke-width=".8" opacity=".6"/>
+              <g id="mountains-panxi">
+                <path d="M0,220 L80,155 L140,180 L220,115 L300,155 L380,135 L480,190 L560,160 L680,200 L748,175 L748,300 L0,300Z" fill="#A8B89F" opacity=".55"/>
+                <path d="M0,245 L60,195 L150,215 L240,170 L340,205 L440,180 L540,225 L640,195 L748,230 L748,300 L0,300Z" fill="#5D7C55" opacity=".9"/>
+              </g>
+              <g id="mountains-guanyang">
+                <path d="M0,195 L70,95 L150,145 L220,48 L310,105 L400,70 L490,130 L580,82 L700,145 L748,110 L748,300 L0,300Z" fill="#A8B89F" opacity=".55"/>
+                <path d="M0,235 L80,170 L170,198 L260,158 L360,188 L460,162 L560,208 L660,172 L748,210 L748,300 L0,300Z" fill="#5D7C55" opacity=".9"/>
+                <ellipse cx="120" cy="105" rx="40" ry="12" fill="#F9F8F4" opacity=".75"/>
+                <ellipse cx="280" cy="88" rx="50" ry="14" fill="#F9F8F4" opacity=".7"/>
+                <ellipse cx="460" cy="96" rx="45" ry="12" fill="#F9F8F4" opacity=".72"/>
+              </g>
+            </svg>
+          </div>
+          <div style="position:absolute;top:12px;right:12px;z-index:4;font-family:Montserrat,sans-serif;font-size:9px;letter-spacing:.14em;color:var(--muted);background:rgba(255,255,255,.85);border:.5px solid var(--border);padding:5px 10px">FUJIAN · FUDING</div>
+        </div>
+        <div class="climate-strip">
+          <div class="climate-item"><div class="climate-k">CLIMATE</div><div class="climate-v" id="climate-v">年均温 16.1°C · 常年云雾</div></div>
+          <div class="climate-item"><div class="climate-k">SOIL</div><div class="climate-v" id="soil-v">黄壤为主 · 富含矿物</div></div>
+        </div>
+      </div>
+      <div class="origin-right">
+        <div class="en" style="font-size:8px;letter-spacing:.2em;color:var(--gold);margin-bottom:8px">SIGNATURE</div>
+        <div class="origin-yun" id="origin-yun">高山韵</div>
+        <p class="origin-yun-desc" id="origin-yun-desc">云海之上，昼夜温差大。滋味清冽，花香高扬，喉韵凉甜。</p>
+        <div style="margin-top:28px;padding-top:20px;border-top:1px solid var(--border)">
+          <div style="font-family:Montserrat,sans-serif;font-size:8px;letter-spacing:.2em;color:var(--gold);margin-bottom:12px">JINGXIN · PRODUCT</div>
+          <div style="border:1px solid var(--border);background:var(--white);padding:16px">
+            <div style="font-size:22px;font-weight:700;letter-spacing:.1em;margin-bottom:4px" data-zh="静芯" data-en="Quiet Heart">静芯</div>
+            <div style="font-family:Montserrat,sans-serif;font-size:9px;letter-spacing:.2em;color:var(--muted);margin-bottom:8px">QUIET HEART · 2023</div>
+            <div style="font-family:Montserrat,sans-serif;font-size:9px;color:var(--green);margin-bottom:8px">白毫银针 · 50g · 罐装</div>
+            <p style="font-size:12px;color:var(--muted);line-height:1.9" data-zh="高山慢长，芽身紧实，毫香清冽不散。" data-en="Slow-grown at altitude, dense buds, crisp aroma that lingers.">高山慢长，芽身紧实，毫香清冽不散。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- PART 02 · 茶品 -->
+<div id="tasting" class="page">
+  <div class="tasting-section">
+    <div class="part-label">
+      <span class="part-num">PART · 02</span>
+      <span style="font-size:13px;color:var(--muted);letter-spacing:.1em" data-zh="茶品" data-en="TASTING">茶品</span>
+      <span class="part-en">PROFESSIONAL TASTING</span>
+    </div>
+    <div class="tasting-grid">
+      <div class="tasting-left">
+        <div style="display:flex;gap:16px;align-items:flex-start;margin-bottom:20px">
+          <div class="tasting-title" data-zh="茶品" data-en="Tasting">茶<br>品</div>
+          <p class="tasting-intro" style="margin-top:8px" data-zh="自外及内，由形入味。<br>六步知其真身，一盏识其本心。" data-en="From outside to inside, from form to taste. Six steps to know the true nature.">自外及内，由形入味。<br>六步知其真身，一盏识其本心。</p>
+        </div>
+        <ol class="steps-list" id="steps-list"></ol>
+      </div>
+      <div class="tasting-mid">
+        <div class="step-upload" id="step-upload-zone" style="background:var(--series-bg)">
+          <div style="font-size:48px;color:rgba(184,160,112,.2);font-weight:700">芯</div>
+          <div style="font-family:Montserrat,sans-serif;font-size:9px;letter-spacing:.2em;color:rgba(184,160,112,.4);margin-top:8px">STEP 01</div>
+          <div class="step-corner-tag" id="step-corner">STEP 01 / 06 · 外观</div>
+        </div>
+        <div class="step-progress" id="step-progress"></div>
+        <div class="step-nav">
+          <button class="step-nav-btn" onclick="prevStep()">←</button>
+          <button class="step-nav-btn next" onclick="nextStep()">→</button>
+        </div>
+      </div>
+      <div class="tasting-right">
+        <div class="step-en" id="step-en">APPEARANCE</div>
+        <div class="step-title" id="step-title">一芽一叶，银衣满身</div>
+        <p class="step-body" id="step-body">静芯银针，芽头肥壮，满披白毫如银衣。未经揉捻，形如针，直如矢。拿起一撮，掌心微暖即散出清鲜毫香。</p>
+        <div class="step-specs" id="step-specs"></div>
+        <div class="quote-box">
+          <span class="quote-side"></span>
+          <span class="quote-mark">「</span>
+          <div class="quote-top">
+            <div style="display:flex;align-items:center;gap:8px">
+              <div class="quote-diamond"></div>
+              <span class="quote-cn" data-zh="茶人寄语" data-en="MASTER'S NOTE">茶人寄语</span>
+            </div>
+            <span class="quote-en" id="quote-en">ON · APPEARANCE</span>
+          </div>
+          <p class="quote-text" id="quote-text">银针要看毫，毫要白要密。白毫是芽的皮肤，是它在高山上对抗寒露的盔甲。</p>
+          <div class="quote-author">
+            <div class="quote-avatar" id="quote-avatar">白</div>
+            <div>
+              <div class="quote-author-name" id="quote-name">— 陈守白</div>
+              <div class="quote-author-role" id="quote-role">制茶师 · 福鼎 · 从业三十二年</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RADAR -->
+    <div class="radar-section">
+      <div class="radar-eyebrow">
+        <div class="radar-eyebrow-text">
+          <div style="width:5px;height:5px;background:var(--green);transform:rotate(45deg)"></div>
+          FLAVOR RADAR · 风味雷达
+        </div>
+      </div>
+      <div class="radar-grid">
+        <div class="radar-left">
+          <h4 class="radar-headline" data-zh="两地之味，<br>同枝异韵。" data-en="Two Mountains,<br>One Leaf.">两地之味，<br>同枝异韵。</h4>
+          <p class="radar-body" data-zh="磻溪之厚，管阳之清。<br>以七维风味轴作横截面，<br>让山场差异一览而明。" data-en="Panxi's body, Guanyang's clarity. Seven flavor axes reveal the mountain difference at a glance.">磻溪之厚，管阳之清。<br>以七维风味轴作横截面，<br>让山场差异一览而明。</p>
+          <div class="radar-legends">
+            <div class="legend-row">
+              <div class="legend-line" style="background:var(--green)"></div>
+              <span class="legend-name">磻溪参考</span>
+              <span class="legend-alt">560m</span>
+            </div>
+            <div class="legend-row">
+              <div class="legend-line" style="background:var(--brown);border-top:2px dashed var(--brown);height:0"></div>
+              <span class="legend-name">管阳参考</span>
+              <span class="legend-alt">740m</span>
+            </div>
+            <div class="legend-row">
+              <div class="legend-line" style="background:var(--red)"></div>
+              <span class="legend-name">静芯实测</span>
+              <span class="legend-alt" style="color:var(--red)">JINGXIN</span>
+            </div>
+          </div>
+        </div>
+        <div class="radar-mid">
+          <canvas id="radar-canvas" width="300" height="300"></canvas>
+        </div>
+        <div class="radar-right">
+          <div style="font-family:Montserrat,sans-serif;font-size:8px;letter-spacing:.2em;color:var(--gold);margin-bottom:12px">FLAVOR SCORES</div>
+          <div id="flavor-sliders"></div>
+        </div>
+      </div>
+      <div class="flavor-notes" id="flavor-notes-grid"></div>
+    </div>
+  </div>
+</div>
+
+<div class="section-divider"></div>
+
+<!-- PART 03 · 茶阁 -->
+<div id="pavilion" class="page">
+  <div class="pavilion-section">
+    <div class="part-label">
+      <span class="part-num">PART · 03</span>
+      <span style="font-size:13px;color:var(--muted);letter-spacing:.1em" data-zh="茶阁" data-en="PAVILION">茶阁</span>
+      <span class="part-en">PACKAGING &amp; VALUE</span>
+    </div>
+    <div class="pavilion-grid">
+      <div class="pavilion-left">
+        <div class="pavilion-img-zone">
+          <div class="pavilion-img-text">芯</div>
+          <div class="pavilion-seal">阁</div>
+        </div>
+      </div>
+      <div class="pavilion-right">
+        <h3 class="pavilion-title" data-zh="静，是银针的本命。" data-en="Stillness is the nature of Silver Needle.">静，是银针的本命。</h3>
+        <p class="pavilion-body" data-zh="管阳高山，云海常驻，昼夜温差十余度。正是这份慢，让静芯银针的芽头比平地生长得更紧实，毫香更持久，内含物更丰富。" data-en="Guanyang highlands. Persistent sea of clouds. Over ten degrees of diurnal temperature swing. This slowness makes Jingxin's buds denser, the aroma more lasting, the inner composition richer.">管阳高山，云海常驻，昼夜温差十余度。正是这份慢，让静芯银针的芽头比平地生长得更紧实，毫香更持久，内含物更丰富。</p>
+
+        <div class="time-axis">
+          <div class="time-axis-line"></div>
+          <div class="time-nodes">
+            <div class="time-node">
+              <div class="time-node-dot"></div>
+              <div class="time-year"><span class="time-year-cn">一年</span><span class="time-role">鲜</span></div>
+              <p class="time-desc" data-zh="毫香清冽，甘冽如泉。" data-en="Crisp aroma, spring-fresh sweetness.">毫香清冽，甘冽如泉。</p>
+            </div>
+            <div class="time-node">
+              <div class="time-node-dot"></div>
+              <div class="time-year"><span class="time-year-cn">三年</span><span class="time-role">陈</span></div>
+              <p class="time-desc" data-zh="毫香渐褪，蜜意渐显。" data-en="The briskness softens into honey.">毫香渐褪，蜜意渐显。</p>
+            </div>
+            <div class="time-node">
+              <div class="time-node-dot"></div>
+              <div class="time-year"><span class="time-year-cn">七年</span><span class="time-role">宝</span></div>
+              <p class="time-desc" data-zh="药香渐起，滋补之性显。" data-en="Medicinal notes emerge, nourishing character deepens.">药香渐起，滋补之性显。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="uses-header">
+          <span class="uses-k">USES · 用途场景</span>
+        </div>
+        <div class="uses-grid">
+          <div class="use-card">
+            <div class="use-img" style="background:#1E2020">
+              <div style="font-size:32px;color:rgba(184,160,112,.3)">礼</div>
+            </div>
+            <div class="use-info">
+              <div class="use-label">
+                <span class="use-cn" data-zh="商务礼赠" data-en="Gift">商务礼赠</span>
+                <span class="use-en-tag">GIFT</span>
+              </div>
+              <p class="use-note" data-zh="素雅罐装，附手写卡。银针贵气，最宜商务馈赠。" data-en="Elegant tin, handwritten card. Silver Needle is the prestige gift.">素雅罐装，附手写卡。银针贵气，最宜商务馈赠。</p>
+            </div>
+          </div>
+          <div class="use-card">
+            <div class="use-img" style="background:#1E2020">
+              <div style="font-size:32px;color:rgba(184,160,112,.3)">品</div>
+            </div>
+            <div class="use-info">
+              <div class="use-label">
+                <span class="use-cn" data-zh="独品清饮" data-en="Solo">独品清饮</span>
+                <span class="use-en-tag">SOLO</span>
+              </div>
+              <p class="use-note" data-zh="盖碗95°C，素身不染，最宜静品。" data-en="Gaiwan at 95°C, nothing added, best enjoyed alone in stillness.">盖碗95°C，素身不染，最宜静品。</p>
+            </div>
+          </div>
+          <div class="use-card">
+            <div class="use-img" style="background:#1E2020">
+              <div style="font-size:32px;color:rgba(184,160,112,.3)">藏</div>
+            </div>
+            <div class="use-info">
+              <div class="use-label">
+                <span class="use-cn" data-zh="收藏陈化" data-en="Age">收藏陈化</span>
+                <span class="use-en-tag">AGE</span>
+              </div>
+              <p class="use-note" data-zh="密封常温，每年取出少量品评，记录时光。" data-en="Sealed at room temperature. Open a little each year to taste the passing of time.">密封常温，每年取出少量品评，记录时光。</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- BUY -->
+        <div class="buy-section">
+          <div>
+            <div class="buy-title" data-zh="静芯 · 白毫银针" data-en="JINGXIN · Silver Needle">静芯 · 白毫银针</div>
+            <div class="buy-sub">50g · 罐装 · 管阳 740m · 2023 春</div>
+          </div>
+          <div style="display:flex;gap:12px;flex-wrap:wrap">
+            <a href="https://store.weixin.qq.com/shop/b/CmrLejp2VwtbE3c?entrance_id=h5"
+               target="_blank" rel="noopener" class="btn-buy btn-wechat" data-zh="微信小店购买" data-en="WECHAT SHOP">微信小店购买</a>
+            <a href="#" class="btn-buy btn-xhs" data-zh="小红书购买" data-en="XIAOHONGSHU">小红书购买</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <strong>三茶阁 SANCHAGE</strong>
+  静芯 · 白毫银针 · 管阳 · 2023 春<br>
+  <span style="font-size:11px;opacity:.7">小而美的臻品白茶 · 每款都有来历 · sanchage.com</span><br>
+  <span style="font-size:11px;opacity:.5"><a href="../" style="color:var(--gold);text-decoration:none">← 返回首页</a> · <a href="../products/" style="color:var(--gold);text-decoration:none">全部产品</a></span>
+</footer>
+
+<script>
+const ORIGINS={panxi:{name:'磻溪',altitude:560,yun:'林木韵',yunDesc:'古树环抱，雨雾常驻。茶汤带幽深林木气，回甘绵长。',climate:'年均温 18.4°C · 森林覆盖率 89%',soil:'红壤夹砂砾 · 腐殖质丰厚'},guanyang:{name:'管阳',altitude:740,yun:'高山韵',yunDesc:'云海之上，昼夜温差大。滋味清冽，花香高扬，喉韵凉甜。',climate:'年均温 16.1°C · 常年云雾',soil:'黄壤为主 · 富含矿物'}};
+let currentOrigin='guanyang';
+
+const STEPS=[
+  {key:'appearance',label:'外观',en:'APPEARANCE',title:'一芽一叶，银衣满身',body:'静芯银针，芽头肥壮，满披白毫如银衣。未经揉捻，形如针，直如矢。拿起一撮，掌心微暖即散出清鲜毫香。',specs:[['芽形','肥壮如针'],['白毫','满披密集'],['色泽','银白带绿'],['嗅感','清鲜毫香']]},
+  {key:'dry',label:'干茶',en:'DRY LEAF',title:'解茶如解一封信',body:'撬开罐盖，干茶整齐排列，银针之名名副其实。嗅之初闻是清鲜草木，揉闻则毫香浓郁，热杯后转为蜜意初显。',specs:[['色泽','银白微绿'],['条索','紧直如针'],['白毫','满披厚实'],['干香','毫香·草木']]},
+  {key:'soup',label:'汤色',en:'LIQUOR',title:'一盏浅黄，透如琉璃',body:'初泡汤色浅黄透亮，清澈见底。三泡后渐转杏黄，油光内敛。对光而视，是云海之上的那种明亮——不夺目，但清彻。',specs:[['初泡','浅黄透亮'],['中段','杏黄'],['尾水','浅橙清亮'],['清澈度','极高']]},
+  {key:'scene',label:'场景',en:'SETTING',title:'素器白茶，相得益彰',body:'白瓷盖碗，最宜银针。清水器皿，让毫香无遮无挡。窗边静坐，茶汤映出天光的颜色——这是静芯最合适的出场。',specs:[['建议器','白瓷盖碗'],['水温','95°C'],['投茶','3g/100ml'],['场合','独品·静思']]},
+  {key:'leaf',label:'叶底',en:'SPENT LEAF',title:'叶底如镜，诚实如初',body:'叶底嫩匀，芽头完整肥壮。色呈嫩绿带黄，叶脉清晰，叶缘微皱——是高山慢长留下的纹路。',specs:[['芽完整','完整肥壮'],['色泽','嫩绿带黄'],['柔软度','柔软有弹'],['匀整','高']]},
+  {key:'pack',label:'包装',en:'PACKAGING',title:'一罐银针，一份安静',body:'素哑光金属罐，铝箔密封内衬，防潮防氧化。外观克制，一如静芯茶本身——不以包装夺茶味，以茶味定包装格调。',specs:[['规格','50g·罐装'],['内衬','食品级铝箔'],['外盖','压扣密封'],['保质','36个月']]}
+];
+
+const QUOTES={
+  appearance:{master:'陈守白',role:'制茶师·福鼎',years:'三十二年',quote:'银针要看毫，毫要白要密。白毫是芽的皮肤，是它在高山上对抗寒露的盔甲。',en:'APPEARANCE'},
+  dry:{master:'陈守白',role:'制茶师·福鼎',years:'三十二年',quote:'干茶要闻三次：初闻、揉闻、热杯闻。每一次，都是茶在和你说话。',en:'DRY LEAF'},
+  soup:{master:'林素清',role:'评茶师·国家一级',years:'二十年',quote:'银针的汤要浅，浅中有深意。看着像清水，喝进去才知道有多厚。',en:'LIQUOR'},
+  scene:{master:'林素清',role:'评茶师·国家一级',years:'二十年',quote:'器是器，境是境，人是人。三者相遇，一盏茶才有了温度。',en:'SETTING'},
+  leaf:{master:'陈守白',role:'制茶师·福鼎',years:'三十二年',quote:'叶底不会骗人。肥壮的芽，是高山给予的馈赠，做不了假。',en:'SPENT LEAF'},
+  pack:{master:'周一川',role:'主理人·三茶阁',years:'八年',quote:'包装是茶的外衣，不能喧宾夺主。素雅即是态度。',en:'PACKAGING'}
+};
+
+const FLAVOR_NOTES=[
+  {axis:'毫香',score:.78,en:'AROMA',desc:'白毫银针特有鲜嫩清冽香气，于杯盖闷香后若隐若现，是静芯最直接的第一维辨识。'},
+  {axis:'花香',score:.88,en:'FLORAL',desc:'管阳高山产区，花香高扬近似兰香。昼夜温差赋予银针异于低海拔的清越花香。'},
+  {axis:'甜度',score:.72,en:'SWEET',desc:'入口清冽带自然甘甜，非糖感，是氨基酸与多糖共同作用的高山甜韵，绵延持久。'},
+  {axis:'醇厚度',score:.68,en:'BODY',desc:'银针以清为主，醇厚为辅。汤体饱满而不沉重，是高山银针独有的清醇并举。'},
+  {axis:'回甘',score:.85,en:'FINISH',desc:'初觉清冽，随后喉间生津，回甘深远如山涧。这是高山茶最迷人的后程。'},
+  {axis:'清冽',score:.92,en:'CLARITY',desc:'管阳740m，清冽度极高。尾水不浊，三泡之后仍如初啜，凉意自喉而下。'},
+  {axis:'山场',score:.90,en:'TERROIR',desc:'管阳高山韵明显，云雾滋养赋予独特矿物感与凉甜喉韵，是区别于磻溪产区的核心辨识维度。'}
+];
+
+const RADAR_DATA={panxi:[.82,.55,.75,.88,.80,.60,.85],guanyang:[.65,.88,.72,.70,.82,.90,.92]};
+let customScores=FLAVOR_NOTES.map(n=>n.score);
+let currentStepIdx=0;
+
+document.addEventListener('DOMContentLoaded',()=>{
+  renderStepsList();renderStepContent();renderStepProgress();
+  renderFlavorSliders();renderFlavorNotes();drawRadar();
+  document.getElementById('mountains-panxi').style.display='none';
+});
+
+function switchOrigin(key){
+  currentOrigin=key;
+  const o=ORIGINS[key];
+  const pct=100-(o.altitude/1000)*90;
+  document.getElementById('alt-line').style.top=pct+'%';
+  document.getElementById('alt-num').textContent=o.altitude;
+  document.getElementById('mountains-panxi').style.display=key==='panxi'?'':'none';
+  document.getElementById('mountains-guanyang').style.display=key==='guanyang'?'':'none';
+  document.getElementById('climate-v').textContent=o.climate;
+  document.getElementById('soil-v').textContent=o.soil;
+  document.getElementById('origin-yun').textContent=o.yun;
+  document.getElementById('origin-yun-desc').textContent=o.yunDesc;
+  document.querySelectorAll('.origin-btn').forEach((btn,i)=>{btn.classList.toggle('active',['panxi','guanyang'][i]===key);});
+}
+
+function renderStepsList(){
+  document.getElementById('steps-list').innerHTML=STEPS.map((s,i)=>`
+    <li class="step-item${i===0?' active':''}" onclick="goToStep(${i})">
+      <div class="step-left"><span class="step-idx">${String(i+1).padStart(2,'0')}</span><span class="step-cn">${s.label}</span></div>
+      <div class="step-diamond"></div>
+    </li>`).join('');
+}
+
+function renderStepContent(){
+  const s=STEPS[currentStepIdx];
+  document.getElementById('step-en').textContent=s.en;
+  document.getElementById('step-title').textContent=s.title;
+  document.getElementById('step-body').textContent=s.body;
+  document.getElementById('step-corner').textContent=`STEP ${String(currentStepIdx+1).padStart(2,'0')} / 06 · ${s.label}`;
+  document.getElementById('step-specs').innerHTML=s.specs.map(([k,v])=>`<div class="spec-item"><div class="spec-k">${k}</div><div class="spec-v">${v}</div></div>`).join('');
+  const q=QUOTES[s.key];
+  if(q){
+    document.getElementById('quote-en').textContent='ON · '+q.en;
+    document.getElementById('quote-text').textContent=q.quote;
+    document.getElementById('quote-avatar').textContent=q.master.slice(-1);
+    document.getElementById('quote-name').textContent='— '+q.master;
+    document.getElementById('quote-role').textContent=q.role+' · 从业 '+q.years;
+  }
+}
+
+function renderStepProgress(){
+  document.getElementById('step-progress').innerHTML=STEPS.map((s,i)=>`<div class="step-progress-bar${i<=currentStepIdx?' done':''}" onclick="goToStep(${i})"></div>`).join('');
+}
+
+function goToStep(i){
+  currentStepIdx=i;
+  document.querySelectorAll('.step-item').forEach((el,j)=>el.classList.toggle('active',j===i));
+  renderStepContent();renderStepProgress();
+}
+
+function nextStep(){goToStep((currentStepIdx+1)%STEPS.length);}
+function prevStep(){goToStep((currentStepIdx-1+STEPS.length)%STEPS.length);}
+
+function drawRadar(){
+  const canvas=document.getElementById('radar-canvas');if(!canvas)return;
+  const ctx=canvas.getContext('2d');const size=300,cx=150,cy=150,R=110;
+  const n=FLAVOR_NOTES.length;
+  function toXY(i,r){const a=Math.PI*2*i/n-Math.PI/2;return[cx+Math.cos(a)*r,cy+Math.sin(a)*r];}
+  ctx.clearRect(0,0,size,size);
+  ctx.strokeStyle='#D8CFBE';ctx.lineWidth=.8;
+  [.25,.5,.75,1].forEach(k=>{ctx.beginPath();FLAVOR_NOTES.forEach((_,i)=>{const[x,y]=toXY(i,R*k);i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});ctx.closePath();ctx.stroke();});
+  FLAVOR_NOTES.forEach((_,i)=>{const[x,y]=toXY(i,R);ctx.beginPath();ctx.moveTo(cx,cy);ctx.lineTo(x,y);ctx.stroke();});
+  function drawPoly(data,hex,opacity,dashed){
+    ctx.beginPath();data.forEach((v,i)=>{const[x,y]=toXY(i,v*R);i===0?ctx.moveTo(x,y):ctx.lineTo(x,y);});ctx.closePath();
+    const r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16);
+    ctx.fillStyle=`rgba(${r},${g},${b},${opacity})`;ctx.strokeStyle=hex;
+    if(dashed)ctx.setLineDash([4,3]);else ctx.setLineDash([]);
+    ctx.lineWidth=1.5;ctx.fill();ctx.stroke();ctx.setLineDash([]);
+  }
+  drawPoly(RADAR_DATA.panxi,'#3A6B4A',.18,false);
+  drawPoly(RADAR_DATA.guanyang,'#8B4513',.14,true);
+  drawPoly(customScores,'#AB0002',.12,false);
+  ctx.fillStyle='#AB0002';
+  customScores.forEach((v,i)=>{const[x,y]=toXY(i,v*R);ctx.beginPath();ctx.arc(x,y,3,0,Math.PI*2);ctx.fill();});
+  ctx.fillStyle='#6A5F50';ctx.font="12px 'Noto Serif SC',serif";ctx.textAlign='center';ctx.textBaseline='middle';
+  FLAVOR_NOTES.forEach((n,i)=>{const[x,y]=toXY(i,R+22);ctx.fillText(n.axis,x,y);});
+}
+
+function renderFlavorSliders(){
+  document.getElementById('flavor-sliders').innerHTML=FLAVOR_NOTES.map((n,i)=>`
+    <div style="margin-bottom:10px${n.axis==='山场'?';padding-top:8px;border-top:1px solid var(--border)':''}">
+      <div style="display:flex;justify-content:space-between;margin-bottom:3px">
+        <span style="font-size:12px;letter-spacing:.12em;color:${n.axis==='山场'?'var(--red)':'var(--ink)'}">${n.axis}</span>
+        <span style="font-family:Montserrat,sans-serif;font-size:9px;color:var(--muted)" id="score-label-${i}">${Math.round(n.score*100)}%</span>
+      </div>
+      <input type="range" min="0" max="1" step="0.01" value="${n.score}" style="width:100%;accent-color:${n.axis==='山场'?'var(--red)':'var(--green)'}" oninput="updateScore(${i},this.value)">
+    </div>`).join('');
+}
+
+function updateScore(i,v){customScores[i]=parseFloat(v);document.getElementById('score-label-'+i).textContent=Math.round(v*100)+'%';drawRadar();}
+
+function renderFlavorNotes(){
+  document.getElementById('flavor-notes-grid').innerHTML=FLAVOR_NOTES.map((n,i)=>{
+    const t=n.axis==='山场';
+    return`<div class="flavor-note">
+      <div class="flavor-idx">${String(i+1).padStart(2,'0')}${t?' · TERROIR':''}</div>
+      <div class="flavor-axis-name">${n.axis}</div>
+      <div style="font-family:Montserrat,sans-serif;font-size:8px;letter-spacing:.18em;color:var(--muted);margin-bottom:8px">${n.en}</div>
+      <div class="flavor-score-row"><div class="flavor-bar-wrap"><div class="flavor-bar" style="width:${n.score*100}%;${t?'background:var(--red)':''}"></div></div><span class="flavor-pct">${Math.round(n.score*100)}%</span></div>
+      <p class="flavor-desc">${n.desc}</p>
+    </div>`;}).join('');
+}
+
+/* BILINGUAL */
+const lang=localStorage.getItem('lang')||'zh';
+setLang(lang);
+function setLang(l){
+  document.querySelectorAll('[data-zh]').forEach(el=>{el.innerHTML=el.dataset[l]||el.dataset.zh;});
+  document.querySelectorAll('.lang-toggle').forEach(btn=>{btn.classList.toggle('active',btn.textContent.trim()===(l==='zh'?'中':'EN'));});
+  localStorage.setItem('lang',l);
+}
+</script>
+</body>
+</html>
